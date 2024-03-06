@@ -104,12 +104,13 @@ const PullThemeSwitch = function (props: Props){
                 // console.log(relativeX);
                 // compute angle
                 const angle = Math.max(minAngle, Math.min(maxAngle, Math.atan2(relativeY - topBlock.position.y, relativeX - topBlock.position.x)));
-                const tooFar = distance({X: topBlock.position.x, Y: topBlock.position.y},
-                    {X: relativeX, Y: relativeY}) > maxRadius;
+                const dist = distance({X: topBlock.position.x, Y: topBlock.position.y},
+                    {X: relativeX, Y: relativeY})
+                const tooFar = dist > maxRadius;
                 // console.log(tooFar);
                 console.log(angle)
-                const newX = tooFar? topBlock.position.x + maxRadius * Math.cos(angle) : relativeX;
-                const newY = Math.max(0, tooFar? topBlock.position.y + maxRadius * Math.sin(angle) : relativeY);
+                const newX = topBlock.position.x + Math.cos(angle) * (tooFar? maxRadius : dist);
+                const newY = Math.max(0, topBlock.position.y + Math.sin(angle) * (tooFar? maxRadius : dist));
                 
                 Body.setPosition(bottomBall, {x: newX, y: newY});
             }

@@ -24,14 +24,15 @@ const Mole: React.FC = () => {
         console.log(`Start${start.X}, ${start.Y}`);
         console.log(`End${end.X}, ${end.Y}`);
         console.log(distance(start, end));
-
+        start.X -= spriteDim.W / 2;
+        start.Y -= spriteDim.H / 2;
 
         // Set to first walking frame
         stand(character);
 
         const spriteMaster = gsap.timeline({overwrite: 'auto'})
         // Orient sprite in right direction
-        const flip = gsap.timeline().to(character, {scaleX: start.X > end.X ? 1 : -1, duration: 0, overwrite: 'auto'});
+        const flip = gsap.timeline().to(character, {scaleX: start.X > end.X + spriteDim.W / 2 ? 1 : -1, duration: 0, overwrite: 'auto'});
         // Sprite loop
         const spriteLoop = gsap.timeline({repeat: -1, delay: 0.25})
                             .to(character, {backgroundPositionX: `${spriteDim.W * (numWalkFrames - 1)}px`, ease: `steps(${numWalkFrames - 1})`, duration: 0.2});
@@ -63,8 +64,6 @@ const Mole: React.FC = () => {
     }
     
     useEffect(() => {
-
-
         const onClick = (event) => {
             const clickCoords = {X: event.clientX, Y: event.clientY};
 
@@ -84,8 +83,9 @@ const Mole: React.FC = () => {
                     }
                 } else if (!grounded) {
                     console.log(`rect${characterRect.left}, ${characterRect.top}`)
-
-                    walk(character, getCenter(characterRect), getRelativeToCenter(characterRect, clickCoords));
+                    const boundedCoords = {X: Math.max(spriteDim.W / 2, Math.min(window.innerWidth - spriteDim.W / 2, event.clientX)),
+                                            Y: Math.max(spriteDim.H / 2, Math.min(window.innerHeight - spriteDim.H / 2, event.clientY))};
+                    walk(character, getCenter(characterRect), getRelativeToCenter(characterRect, boundedCoords));
                 }
             }
         }
@@ -98,7 +98,7 @@ const Mole: React.FC = () => {
     
     
     return (
-        <div ref={characterRef} style={{background: `url(assets/images/mole_sheet_large.png)`, width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}>
+        <div ref={characterRef} style={{position: 'absolute', background: `url(assets/images/mole_sheet_large.png)`, width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}>
         </div>
     );
 };

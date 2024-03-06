@@ -10,10 +10,9 @@ const App: React.FC = () => {
 
   return (
     <div className={`h-screen w-screen ${themes[themeIndex].colors.bg} ${themes[themeIndex].colors.text}`}>
-      <Mole></Mole>
+        <Mole></Mole>
       <div className={`flex flex-col justify-center items-center`}>
         <h2>Marcus Cheung</h2>
-      <div className={'h-64 w-16'}></div>
         <PullThemeSwitch setTheme={setThemeIndex}></PullThemeSwitch>
       </div>
     </div>

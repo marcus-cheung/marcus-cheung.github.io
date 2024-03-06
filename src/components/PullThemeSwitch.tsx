@@ -13,7 +13,7 @@ interface Props {
 
 const PullThemeSwitch = function (props: Props){
   const scene = useRef<any>();
-  const engine = useRef(Engine.create({gravity: {y: 1.5}}));
+  const engine = useRef(Engine.create({gravity: {y: 1.5}, time: {timeScale: 1.5}}));
   const maxRadius = 250;
   const thresh = maxRadius * 0.85;
 
@@ -31,7 +31,8 @@ const PullThemeSwitch = function (props: Props){
                 width: sceneWidth,
                 height: sceneHeight,
                 background: 'transparent',
-                wireframeBackground: 'transparent'
+                wireframeBackground: 'transparent',
+                
             }
           })
 

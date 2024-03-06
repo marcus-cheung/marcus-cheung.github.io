@@ -13,11 +13,11 @@ interface Props {
 
 const PullThemeSwitch = function (props: Props){
   const scene = useRef<any>();
-  const scale = 0.5;
+  const scale = 0.3;
 
   const engine = useRef(Engine.create({gravity: {y: 1.5 * scale}, time: {timeScale: 1.5}}));
   const maxRadius = 250 * scale;
-  const thresh = maxRadius * 0.85;
+  const thresh = maxRadius * 0.80;
 
   const minAngle = 60 * Math.PI / 180.0;
   const maxAngle = 120 * Math.PI / 180.0;
@@ -66,7 +66,7 @@ const PullThemeSwitch = function (props: Props){
             bodyA: rope.bodies[rope.bodies.length-1],
             pointA: { x: 0, y: 0 },
             pointB: { x: 0, y: 0 },
-            stiffness: 0.1,
+            stiffness: 0.05,
             length: 0,
             collisionFilter: { group: group},
             render: {type: 'string',

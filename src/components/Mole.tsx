@@ -13,6 +13,7 @@ const Mole: React.FC = () => {
     const numWalkFrames = 2;
     const [grounded, setGrounded] = useState(true);
     const [locked, setLocked] = useState(false);
+    const [orientation, setOrientation] = useState(1); // start left facing
     const [loaded, setLoaded] = useState(false);
 
     // Define animations
@@ -21,18 +22,21 @@ const Mole: React.FC = () => {
     }
 
     function walk(character: any, start: Coordinate, end: Coordinate, speed: number = 500) {
-        console.log(`Start${start.X}, ${start.Y}`);
-        console.log(`End${end.X}, ${end.Y}`);
+        
         console.log(distance(start, end));
         start.X -= spriteDim.W / 2;
-        start.Y -= spriteDim.H / 2;
-
+        start.Y -= spriteDim.H / 2; // adjust to true mole center
+        console.log(`Start${start.X}, ${start.Y}`);
+        console.log(`End${end.X}, ${end.Y}`);
         // Set to first walking frame
         stand(character);
 
         const spriteMaster = gsap.timeline({overwrite: 'auto'})
         // Orient sprite in right direction
-        const flip = gsap.timeline().to(character, {scaleX: start.X > end.X + spriteDim.W / 2 ? 1 : -1, duration: 0, overwrite: 'auto'});
+        const newOrientation = start.X - spriteDim.W / 16 * 3 * orientation > end.X ? 1 : -1
+        setOrientation(newOrientation);
+        const flip = gsap.timeline().to(character, {scaleX: newOrientation, duration: 0, overwrite: 'auto'});
+        
         // Sprite loop
         const spriteLoop = gsap.timeline({repeat: -1, delay: 0.25})
                             .to(character, {backgroundPositionX: `${spriteDim.W * (numWalkFrames - 1)}px`, ease: `steps(${numWalkFrames - 1})`, duration: 0.2});

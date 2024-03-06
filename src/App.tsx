@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {themes} from './Themes'
 import Mole from './components/Mole'
 import PullThemeSwitch from './components/PullThemeSwitch';
@@ -11,9 +11,13 @@ const App: React.FC = () => {
   return (
     <div className={`h-screen w-screen ${themes[themeIndex].colors.bg} ${themes[themeIndex].colors.text}`}>
         <Mole></Mole>
-      <div className={`flex flex-col justify-center items-center`}>
+      <div>
         <h2>Marcus Cheung</h2>
-        <PullThemeSwitch setTheme={setThemeIndex}></PullThemeSwitch>
+        <div className={`flex flex-col justify-center items-center`}>
+          <img src={`${themes[themeIndex].assets.bulb}`} style={{width: '40px', height: 'auto'}}/>
+          <PullThemeSwitch setTheme={setThemeIndex}></PullThemeSwitch>
+        </div>
+        
       </div>
     </div>
     

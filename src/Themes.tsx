@@ -4,31 +4,30 @@ export interface Theme {
     bg: string;
     text: string;
   };
+  assets: {
+    bulb: string;
+  }
 }
 
 export const themes: Theme[] = [
   {
-    name: "Default",
+    name: "Light",
     colors: {
       bg: "bg-blue-500",
       text: "text-gray-10",
-
     },
+    assets: {
+      bulb: 'assets/images/bulb_on.png'
+    }
   },
   {
     name: "Dark",
     colors: {
       bg: "bg-black",
       text: "text-white",
-
     },
-  },
-  {
-    name: "Dark",
-    colors: {
-      bg: "bg-yellow-50",
-      text: "text-black",
-
-    },
-  },
+    assets: {
+      bulb: 'assets/images/bulb_off_2.png'
+    }
+  }
 ];

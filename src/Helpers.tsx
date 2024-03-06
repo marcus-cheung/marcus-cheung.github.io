@@ -16,15 +16,13 @@ export interface Coordinate{
 }
 
 export function getCenter(rect: any): Coordinate {
-    return {X: rect.left + 80,
-            Y: rect.top + 80};
+    return {X: rect.left + rect.width / 2,
+            Y: rect.top + rect.height / 2};
 }
 
 export function getRelativeToCenter(rect: any, end: Coordinate): Coordinate {
-    // return {X: end.X - rect.width / 2,
-    //         Y: end.Y - rect.height / 2};
-    return {X: end.X - 80,
-            Y: end.Y - 80};
+    return {X: end.X - rect.width / 2,
+            Y: end.Y - rect.height / 2};
 }
 
 export function distance(start: Coordinate, end: Coordinate): number {

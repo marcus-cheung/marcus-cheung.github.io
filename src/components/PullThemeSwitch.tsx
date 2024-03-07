@@ -22,8 +22,8 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
 
   const topMargin = maxRadius * 0.2;
 
-  const sceneWidth = thresh * 2.4;
-  const sceneHeight = thresh * 1.7;
+  const sceneWidth = thresh * 1.45-1;
+  const sceneHeight = thresh * 1.6;
   const stiffness = 0.55;
   const constraintRender = {type: 'line'}
 

@@ -17,7 +17,7 @@ const Navbar = ({setThemeIndex, theme}) => {
         </li>
         <li>
           <img src={theme.assets.bulb} style={{width: '24px', minWidth: '24px', height: 'auto', userSelect: 'none'}}/>
-          <div className='absolute right-1 top-8'>
+          <div className='absolute top-8' style={{right: '33px'}}>
             <PullThemeSwitch setThemeIndex={setThemeIndex}></PullThemeSwitch>
           </div>
         </li>

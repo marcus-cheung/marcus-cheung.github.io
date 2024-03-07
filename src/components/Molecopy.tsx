@@ -1,11 +1,11 @@
 
-import React, { useEffect, useState, useRef, memo } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {gsap} from 'gsap';
 import {Coordinate, getCenter, getRelativeToCenter, distance, inBounds} from '../Helpers'
 
 
 const Mole: React.FC = () => {
-    const spriteDim = {W: 16, H: 16};
+    const spriteDim = {W: 160, H: 160};
     const characterRef = useRef<any>(null);
     const standFrame = 2 * spriteDim.W;
     const jumpFrame = 1 * spriteDim.W;
@@ -22,7 +22,7 @@ const Mole: React.FC = () => {
         gsap.to(character, {backgroundPositionX: `${-standFrame}px`, delay: delay, duration: 0, overwrite: 'auto'});
     }
 
-    function walk(character: any, start: Coordinate, end: Coordinate, speed: number = 200) {
+    function walk(character: any, start: Coordinate, end: Coordinate, speed: number = 500) {
         
         console.log(distance(start, end));
         start.X -= spriteDim.W / 2 + origin!.X;
@@ -40,8 +40,8 @@ const Mole: React.FC = () => {
         const flip = gsap.timeline().to(character, {scaleX: newOrientation, duration: 0, overwrite: 'auto'});
         
         // Sprite loop
-        const spriteLoop = gsap.timeline({repeat: -1, delay: 0.5})
-                            .to(character, {backgroundPositionX: `${spriteDim.W * (numWalkFrames - 1)}px`, ease: `steps(${numWalkFrames - 1})`, duration: 0.05});
+        const spriteLoop = gsap.timeline({repeat: -1, delay: 0.25})
+                            .to(character, {backgroundPositionX: `${spriteDim.W * (numWalkFrames - 1)}px`, ease: `steps(${numWalkFrames - 1})`, duration: 0.2});
         spriteMaster.add(flip).add(spriteLoop);
         spriteMaster.play();
 
@@ -110,7 +110,7 @@ const Mole: React.FC = () => {
     
     
     return (
-        <div ref={characterRef} style={{position: 'absolute', background: `url(assets/images/mole_sheet.png)`, width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}></div>
+        <div ref={characterRef} style={{position: 'absolute', background: `url(assets/images/mole_sheet_large.png)`, width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}></div>
     );
 };
 

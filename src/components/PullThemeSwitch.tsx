@@ -5,13 +5,11 @@ import { getCurrentTheme, distance } from '../Helpers'
 
 
 interface Props {
-    setTheme: any;
-    // width: number;
-    // height: number;
+    setThemeIndex: any;
   }
   
 
-const PullThemeSwitch = function (props: Props){
+const PullThemeSwitch = ({setThemeIndex}) =>{
   const scene = useRef<any>();
   const scale = 0.3;
 
@@ -103,7 +101,7 @@ const PullThemeSwitch = function (props: Props){
                 if (dist > thresh) {// Below the relative threshold
                     const newIndex = (getCurrentTheme() + 1) % themes.length
                     localStorage.setItem("themeIndex", JSON.stringify(newIndex));
-                    props.setTheme(newIndex);
+                    setThemeIndex(newIndex);
                 }
             }
         }

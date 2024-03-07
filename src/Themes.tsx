@@ -1,7 +1,8 @@
 export interface Theme {
   name: string;
   colors: {
-    bg: string;
+    main: string;
+    secondary: string;
     text: string;
   };
   assets: {
@@ -13,21 +14,23 @@ export const themes: Theme[] = [
   {
     name: "Light",
     colors: {
-      bg: "bg-blue-500",
-      text: "text-gray-10",
+      main: "bg-stone-50",
+      secondary: "bg-stone-100",
+      text: "text-orange-500",
     },
     assets: {
-      bulb: 'assets/images/bulb_on.png'
+      bulb: 'assets/images/bulb_on_orange.png'
     }
   },
   {
     name: "Dark",
     colors: {
-      bg: "bg-black",
+      main: "bg-neutral-800",
+      secondary: "bg-neutral-900",
       text: "text-white",
     },
     assets: {
-      bulb: 'assets/images/bulb_off_2.png'
+      bulb: 'assets/images/bulb_off_white.png'
     }
   }
 ];

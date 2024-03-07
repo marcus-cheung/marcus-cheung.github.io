@@ -7,6 +7,8 @@ export interface Theme {
   };
   assets: {
     bulb: string;
+    bg_texture: string;
+    secondary_texture: string;
   }
 }
 
@@ -19,7 +21,9 @@ export const themes: Theme[] = [
       text: "text-orange-500",
     },
     assets: {
-      bulb: 'assets/images/bulb_on_orange.png'
+      bulb: 'assets/images/bulb_on_orange.png',
+      bg_texture: 'url(assets/images/textures/light_cloth_hoz.png)',
+      secondary_texture: 'url(assets/images/textures/light_cloth_vert.png)'
     }
   },
   {
@@ -30,7 +34,9 @@ export const themes: Theme[] = [
       text: "text-white",
     },
     assets: {
-      bulb: 'assets/images/bulb_off_white.png'
+      bulb: 'assets/images/bulb_off_white.png',
+      bg_texture: 'url(assets/images/textures/dark_cloth_hoz.png)',
+      secondary_texture: 'url(assets/images/textures/dark_cloth_vert.png)'
     }
   }
 ];

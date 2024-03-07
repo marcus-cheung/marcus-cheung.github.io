@@ -4,8 +4,8 @@ import {gsap} from 'gsap';
 import {Coordinate, getCenter, getRelativeToCenter, distance, inBounds} from '../Helpers'
 
 
-const Mole: React.FC = () => {
-    const spriteDim = {W: 16, H: 16};
+const Mole= ({themeIndex}) => {
+    const spriteDim = {W: 48, H: 48};
     const characterRef = useRef<any>(null);
     const standFrame = 2 * spriteDim.W;
     const jumpFrame = 1 * spriteDim.W;
@@ -23,8 +23,6 @@ const Mole: React.FC = () => {
     }
 
     function walk(character: any, start: Coordinate, end: Coordinate, speed: number = 200) {
-        
-        console.log(distance(start, end));
         start.X -= spriteDim.W / 2 + origin!.X;
         start.Y -= spriteDim.H / 2 + origin!.Y; // adjust to true mole center
         end.X -= origin!.X;
@@ -41,7 +39,7 @@ const Mole: React.FC = () => {
         
         // Sprite loop
         const spriteLoop = gsap.timeline({repeat: -1, delay: 0.5})
-                            .to(character, {backgroundPositionX: `${spriteDim.W * (numWalkFrames - 1)}px`, ease: `steps(${numWalkFrames - 1})`, duration: 0.05});
+                            .to(character, {backgroundPositionX: `${spriteDim.W * (numWalkFrames - 1)}px`, ease: `steps(${numWalkFrames - 1})`, duration: 0.2});
         spriteMaster.add(flip).add(spriteLoop);
         spriteMaster.play();
 
@@ -71,6 +69,7 @@ const Mole: React.FC = () => {
     
     useEffect(() => {
         const character = characterRef.current;
+        gsap.to(character, {backgroundPositionY: `${-themeIndex * spriteDim.H}px`, duration: 0});
 
         if (!origin) {
             const characterRect = character!.getBoundingClientRect();
@@ -93,7 +92,6 @@ const Mole: React.FC = () => {
                         dig(character);
                     }
                 } else if (!grounded) {
-                    console.log(`rect${characterRect.left}, ${characterRect.top}`)
                     const boundedCoords = {X: Math.max(spriteDim.W / 2 + origin!.X, Math.min(window.innerWidth - spriteDim.W / 2, event.clientX)),
                                             Y: Math.max(spriteDim.H / 2 + origin!.Y, Math.min(window.innerHeight - spriteDim.H / 2, event.clientY))};
 
@@ -110,7 +108,7 @@ const Mole: React.FC = () => {
     
     
     return (
-        <div ref={characterRef} style={{position: 'absolute', background: `url(assets/images/mole_sheet.png)`, width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}></div>
+        <div ref={characterRef} style={{position: 'absolute', background: 'url(assets/images/sprites/mole_sheet_3x.png)', width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}></div>
     );
 };
 

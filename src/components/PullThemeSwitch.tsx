@@ -13,15 +13,20 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
   const scene = useRef<any>();
   const scale = 0.3;
 
-  const engine = useRef(Engine.create({gravity: {y: 1.5 * scale}, time: {timeScale: 1.5}}));
+  const engine = useRef(Engine.create({gravity: {y: 1 * scale}, timing: {timeScale: 2}}));
   const maxRadius = 250 * scale;
   const thresh = maxRadius * 0.80;
 
   const minAngle = 60 * Math.PI / 180.0;
   const maxAngle = 120 * Math.PI / 180.0;
 
+  const topMargin = maxRadius * 0.2;
+
   const sceneWidth = thresh * 2.4;
-  const sceneHeight = thresh * 1.5;
+  const sceneHeight = thresh * 1.7;
+  const stiffness = 0.55;
+  const constraintRender = {type: 'line'}
+
 
     useEffect(() => {
         const render = Render.create({
@@ -32,31 +37,28 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
                 height: sceneHeight,
                 background: 'transparent',
                 wireframeBackground: 'transparent',
-                
             }
           })
 
         var group = Body.nextGroup(true);
 
-        var topBlock = Bodies.rectangle(sceneWidth/2, 0, 10 * scale, 10 * scale, { collisionFilter: { group: group}, isStatic: true, render: {fillStyle: '#808080'}})
+        var topBlock = Bodies.rectangle(sceneWidth/2, topMargin, 10 * scale, 10 * scale, { collisionFilter: { group: group}, isStatic: true, render: {fillStyle: '#808080'}})
     
-        var bottomBall = Bodies.circle(sceneWidth/2, 40 * scale, 10 * scale, { collisionFilter: { group: group}, render: {fillStyle: '#808080'}})
+        var bottomBall = Bodies.circle(sceneWidth/2, 40 * scale + topMargin, 10 * scale, { collisionFilter: { group: group}, render: {fillStyle: '#808080'}})
     
-        var rope = Composites.stack(sceneWidth/2, 0, 14 * scale, 1, 10 * scale, 0, function(x, y) {
+        var rope = Composites.stack(sceneWidth/2, 0, 20 * scale, 1, 10 * scale, 0, function(x, y) {
             return Bodies.rectangle(x, y, 4 * scale, 2 * scale, { collisionFilter: { group: group} });
         });
     
-        Composites.chain(rope, 0.5, 0, -0.5, 0, { stiffness: 0, length: 0, render: { type: 'line', collisionFilter: { group: group }} });
+        Composites.chain(rope, 0.5, 0, -0.5, 0, { stiffness: stiffness, length: 0, render: constraintRender, collisionFilter: { group: group } });
     
         const topConstraint = Constraint.create({
             bodyA: topBlock,
             bodyB: rope.bodies[0],
-            stiffness: 0,
+            stiffness: stiffness,
             length: 0,
             collisionFilter: { group: group},
-            render: {visible: false}
-
-
+            render: constraintRender
         });
     
         const bottomConstraint = Constraint.create({
@@ -64,11 +66,10 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
             bodyA: rope.bodies[rope.bodies.length-1],
             pointA: { x: 0, y: 0 },
             pointB: { x: 0, y: 0 },
-            stiffness: 0.05,
+            stiffness: stiffness,
             length: 0,
             collisionFilter: { group: group},
-            render: {type: 'string',
-                    anchors: false}
+            render: constraintRender
 
         });
             
@@ -92,7 +93,6 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
         }
 
         const onUp = (event) => {
-            const rect = scene.current.getBoundingClientRect();
             if (bottomBall.dragging) {
                 bottomBall.dragging = false;
                 bottomBall.isStatic = false;
@@ -111,17 +111,11 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
             if (bottomBall.dragging) {
                 const relativeX = event.clientX - rect.left;
                 const relativeY = event.clientY - rect.top;
-                // console.log(relativeX);
-                // compute angle
-                console.log(Math.atan2(relativeY - topBlock.position.y, relativeX - topBlock.position.x))
                 const angle = Math.max(minAngle, Math.min(maxAngle, Math.abs(Math.atan2(relativeY - topBlock.position.y, relativeX - topBlock.position.x))));
                 const dist = distance({X: topBlock.position.x, Y: topBlock.position.y},
-                    {X: relativeX, Y: relativeY})
-                const tooFar = dist > maxRadius;
-                // console.log(tooFar);
-                // console.log(angle)
-                const newX = topBlock.position.x + Math.cos(angle) * (tooFar? maxRadius : dist);
-                const newY = Math.max(0, topBlock.position.y + Math.sin(angle) * (tooFar? maxRadius : dist));
+                                        {X: relativeX, Y: relativeY})
+                const newX = topBlock.position.x + Math.cos(angle) * (dist > maxRadius? maxRadius : dist);
+                const newY = Math.max(0, topBlock.position.y + Math.sin(angle) * (dist > maxRadius? maxRadius : dist));
                 
                 Body.setPosition(bottomBall, {x: newX, y: newY});
             }

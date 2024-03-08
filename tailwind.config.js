@@ -8,8 +8,10 @@ module.exports = {
           red: '#cc4c0c',
           blue: '#04848c',
           cyan: '#cefefa'
+        },
+        backgroundSize: {
+          full: '100%'
         }
-   
       }
     },
   },

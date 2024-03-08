@@ -22,10 +22,9 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
 
   const topMargin = maxRadius * 0.2;
 
-  const sceneWidth = thresh * 1.45-1;
+  const sceneWidth = thresh * 1.45;
   const sceneHeight = thresh * 1.6;
   const stiffness = 0.55;
-  const constraintRender = {type: 'line'}
 
 
     useEffect(() => {
@@ -37,17 +36,22 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
                 height: sceneHeight,
                 background: 'transparent',
                 wireframeBackground: 'transparent',
+                wireframes: false,
             }
           })
 
         var group = Body.nextGroup(true);
 
-        var topBlock = Bodies.rectangle(sceneWidth/2, topMargin, 10 * scale, 10 * scale, { collisionFilter: { group: group}, isStatic: true, render: {fillStyle: '#808080'}})
+        const color = getCurrentTheme() ? 'white': 'black';
+        
+        const constraintRender = {type: 'line', strokeStyle: color, lineWidth: 0.5};
+
+        var topBlock = Bodies.rectangle(sceneWidth/2, topMargin, 10 * scale, 10 * scale, { collisionFilter: { group: group}, isStatic: true, render: {visible: false}});
     
-        var bottomBall = Bodies.circle(sceneWidth/2, 40 * scale + topMargin, 10 * scale, { collisionFilter: { group: group}, render: {fillStyle: '#808080'}})
+        var bottomBall = Bodies.circle(sceneWidth/2, 40 * scale + topMargin, 5 * scale, { collisionFilter: { group: group}, render: {fillStyle: color}});
     
-        var rope = Composites.stack(sceneWidth/2, 0, 20 * scale, 1, 10 * scale, 0, function(x, y) {
-            return Bodies.rectangle(x, y, 4 * scale, 2 * scale, { collisionFilter: { group: group} });
+        var rope = Composites.stack(sceneWidth/2, 0, 38 * scale, 1, 10 * scale, 0, function(x, y) {
+            return Bodies.rectangle(x, y, 4 * scale, 2 * scale, {collisionFilter: {group: group}, render: {fillStyle: color}});
         });
     
         Composites.chain(rope, 0.5, 0, -0.5, 0, { stiffness: stiffness, length: 0, render: constraintRender, collisionFilter: { group: group } });
@@ -102,6 +106,18 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
                     const newIndex = (getCurrentTheme() + 1) % themes.length
                     localStorage.setItem("themeIndex", JSON.stringify(newIndex));
                     setThemeIndex(newIndex);
+                    const color = newIndex ? 'white': 'black';
+                    topBlock.render.fillStyle = color;
+                    topConstraint.render.strokeStyle = color;
+                    bottomConstraint.render.strokeStyle = color;
+                    bottomBall.render.fillStyle = color;
+                    for (const constraint of Composite.allConstraints(rope)) {
+                        constraint.render.strokeStyle = color;
+                    }
+
+                    for (const body of rope.bodies) {
+                        body.render.fillStyle = color;
+                    }
                 }
             }
         }

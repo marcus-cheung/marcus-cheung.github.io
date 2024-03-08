@@ -2,24 +2,38 @@ import React from 'react';
 import PullThemeSwitch from './PullThemeSwitch';
 import { Theme } from '../Themes';
 
-const Navbar = ({setThemeIndex, theme}) => {
 
+
+const Navbar = ({setThemeIndex, theme}) => {
+  const ButtonStyle = (link, comp) => {
+    return (<div onClick={() => {window.location.href = link}} className={`bg-repeat cursor-pointer px-10 py-4 flex justify-center items-center`} style={{background: theme.textures.secondary}}>
+      {comp}
+      </div>)
+  }
+
+  const logo = <a><strong>Marcus</strong></a>;
+  const about = <a><strong>About</strong></a>
+  const contact = <a><strong>Contact</strong></a>
+  const lightbulb = <div className={`bg-repeat px-2 py-2 h-full flex justify-center items-center`} style={{background: theme.textures.secondary}}> 
+                      <img src={theme.assets.bulb} style={{width: '42px', minWidth: '42px', height: 'auto', userSelect: 'none'}}/>
+                    </div>
+  const pullstring = <div style={{position: 'absolute', right: '49px', top: '54px'}}>
+                  <PullThemeSwitch setThemeIndex={setThemeIndex}></PullThemeSwitch>
+                </div>
   
   return (
-    <nav className={`bg-repeat w-full h-16 flex px-16 justify-between items-center`} style={{background: theme.assets.secondary_texture}}>
-      <a href="#/" className=""><strong>Marcus Cheung</strong></a>
+    <nav className={`bg-repeat w-full h-20 flex px-16 justify-between items-center`} style={{background: theme.textures.secondary}}>
+         {ButtonStyle('#/', logo)}
       <ul className='flex gap-8 items-center'>
         <li>
-          <a href="#/about" className="nav-link"><strong>About</strong></a>
+          {ButtonStyle('#/about', about)}
         </li>
         <li>
-          <a href="#/contact" className="nav/a"><strong>Contact</strong></a>
+          {ButtonStyle('#/contact', contact)}
         </li>
         <li>
-          <img src={theme.assets.bulb} style={{width: '24px', minWidth: '24px', height: 'auto', userSelect: 'none'}}/>
-          <div className='absolute top-8' style={{right: '33px'}}>
-            <PullThemeSwitch setThemeIndex={setThemeIndex}></PullThemeSwitch>
-          </div>
+          {lightbulb}
+          {pullstring}
         </li>
       </ul>
     </nav>

@@ -16,10 +16,12 @@ const Mole= ({themeIndex}) => {
     const [locked, setLocked] = useState(false);
     const [orientation, setOrientation] = useState(1); // start left facing
     const [loaded, setLoaded] = useState(false);
+    const topBounds = 64;
 
     // Define animations
     function stand(character: any, delay: number = 0) {
-        gsap.to(character, {backgroundPositionX: `${-standFrame}px`, delay: delay, duration: 0, overwrite: 'auto'});
+        gsap.to(character, {backgroundPositionX: `${-standFrame}px`, delay: delay, duration: 0, overwrite: 'auto',
+        onComplete: function() {setGrounded(false); setLocked(false);}});
     }
 
     function walk(character: any, start: Coordinate, end: Coordinate, speed: number = 200) {
@@ -56,13 +58,13 @@ const Mole= ({themeIndex}) => {
 
     function jump(character: any) {
         const jump = gsap.timeline().to(character, {backgroundPositionX: `${-jumpFrame}px`, duration: 0})
-                                    .to({}, {duration: 0.5, onComplete: function() {setGrounded(false); setLocked(false);}});
+                                    .to(character, {y: '-=48px', duration: 0.6})
+                                    .to(character, {y: '+=48px', ease: 'power2.out', duration: 0.4})
         jump.play();
     }
 
-    function dig(character: any) {
-        const dig = gsap.timeline().to(character, {backgroundPositionX: `${-jumpFrame}px`, duration: 0})
-                                    .to(character, {backgroundPositionX: `${-groundFrame}px`, duration: 0, delay: 0.5})
+    function dig(character: any, delay: number = 0) {
+        const dig = gsap.timeline().to(character, {backgroundPositionX: `${-groundFrame}px`, duration: 0, delay: delay})
                                     .to({}, {duration: 0.3, onComplete: function() {setGrounded(true); setLocked(false);}});
         dig.play();
     }
@@ -87,13 +89,14 @@ const Mole= ({themeIndex}) => {
                     setLocked(true); // Lock animations
                     if (grounded) {
                         jump(character);
-                        stand(character, 0.3);
+                        stand(character, 0.9);
                     } else {
-                        dig(character);
+                        jump(character);
+                        dig(character, 0.9);
                     }
                 } else if (!grounded) {
-                    const boundedCoords = {X: Math.max(spriteDim.W / 2 + origin!.X, Math.min(window.innerWidth - spriteDim.W / 2, event.clientX)),
-                                            Y: Math.max(spriteDim.H / 2 + origin!.Y, Math.min(window.innerHeight - spriteDim.H / 2, event.clientY))};
+                    const boundedCoords = {X: Math.max(spriteDim.W / 2, Math.min(window.innerWidth - spriteDim.W / 2, event.clientX)),
+                                            Y: Math.max(spriteDim.H / 2 + topBounds, Math.min(window.innerHeight - spriteDim.H / 2, event.clientY))};
 
                     walk(character, getCenter(characterRect), getRelativeToCenter(characterRect, boundedCoords));
                 }
@@ -108,7 +111,7 @@ const Mole= ({themeIndex}) => {
     
     
     return (
-        <div ref={characterRef} style={{position: 'absolute', background: 'url(assets/images/sprites/mole_sheet_3x.png)', width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}></div>
+        <div ref={characterRef} style={{backgroundImage: 'url(assets/images/sprites/mole_sheet_3x.png)', width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}></div>
     );
 };
 

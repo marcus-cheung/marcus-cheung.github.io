@@ -6,7 +6,7 @@ import { getCurrentTheme, distance } from '../Helpers'
 
   
 
-const PullThemeSwitch = ({setThemeIndex, setIsHovered}) =>{
+const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
     const scene = useRef<any>();
     const scale = 0.3;
 
@@ -90,7 +90,7 @@ const PullThemeSwitch = ({setThemeIndex, setIsHovered}) =>{
                 event.clientY <= bottomBall.bounds.max.y + rect.top + 20 * scale) {
                 bottomBall.isStatic = true;
                 bottomBall.dragging = true;
-                setIsHovered(true);
+                setCursorStyle('grabbing');
             }
         }
 
@@ -117,7 +117,7 @@ const PullThemeSwitch = ({setThemeIndex, setIsHovered}) =>{
                         body.render.fillStyle = color;
                     }
                 }
-                setIsHovered(false);
+                setCursorStyle('default');
             }
         }
 
@@ -137,9 +137,9 @@ const PullThemeSwitch = ({setThemeIndex, setIsHovered}) =>{
                 event.clientX <= bottomBall.bounds.max.x + rect.left + 20 * scale &&
                 event.clientY >= bottomBall.bounds.min.y + rect.top - 20 * scale &&
                 event.clientY <= bottomBall.bounds.max.y + rect.top + 20 * scale) {
-                setIsHovered(true);
+                setCursorStyle('grab');
             } else {
-                setIsHovered(false);
+                setCursorStyle('default');
             }
         }
 

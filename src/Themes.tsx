@@ -4,7 +4,6 @@ export interface Theme {
     primary: string;
     secondary: string;
     text: string;
-    subtle: string;
   };
   assets: {
     bulb: string;
@@ -25,10 +24,9 @@ export const themes: Theme[] = [
       primary: "bg-stone-50",
       secondary: "bg-stone-100",
       text: "text-black",
-      subtle: "#D3D3D3"
     },
     assets: {
-      bulb: 'assets/images/icons/lightbulb_on.png',
+      bulb: 'assets/images/icons/lightbulb_on_3.png',
       email: 'assets/images/icons/email.png',
       linkedin: 'assets/images/icons/linkedin.png',
       github: 'assets/images/icons/github.png',
@@ -44,7 +42,6 @@ export const themes: Theme[] = [
       primary: "bg-neutral-800",
       secondary: "bg-neutral-900",
       text: "text-white",
-      subtle: "#242020"
     },
     assets: {
       bulb: 'assets/images/icons/lightbulb_off.png',

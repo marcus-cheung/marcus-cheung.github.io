@@ -4,27 +4,24 @@ import {themes} from '../Themes'
 import { getCurrentTheme, distance } from '../Helpers'
 
 
-interface Props {
-    setThemeIndex: any;
-  }
   
 
-const PullThemeSwitch = ({setThemeIndex}) =>{
-  const scene = useRef<any>();
-  const scale = 0.3;
+const PullThemeSwitch = ({setThemeIndex, setIsHovered}) =>{
+    const scene = useRef<any>();
+    const scale = 0.3;
 
-  const engine = useRef(Engine.create({gravity: {y: 1 * scale}, timing: {timeScale: 2}}));
-  const maxRadius = 250 * scale;
-  const thresh = maxRadius * 0.80;
+    const engine = useRef(Engine.create({gravity: {y: 1 * scale}, timing: {timeScale: 2}}));
+    const maxRadius = 250 * scale;
+    const thresh = maxRadius * 0.80;
 
-  const minAngle = 60 * Math.PI / 180.0;
-  const maxAngle = 120 * Math.PI / 180.0;
+    const minAngle = 60 * Math.PI / 180.0;
+    const maxAngle = 120 * Math.PI / 180.0;
 
-  const topMargin = maxRadius * 0.2;
+    const topMargin = maxRadius * 0.2;
 
-  const sceneWidth = thresh * 1.45;
-  const sceneHeight = thresh * 1.6;
-  const stiffness = 0.55;
+    const sceneWidth = thresh * 1.45;
+    const sceneHeight = thresh * 1.6;
+    const stiffness = 0.55;
 
 
     useEffect(() => {
@@ -38,7 +35,7 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
                 wireframeBackground: 'transparent',
                 wireframes: false,
             }
-          })
+            })
 
         var group = Body.nextGroup(true);
 
@@ -47,15 +44,15 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
         const constraintRender = {type: 'line', strokeStyle: color, lineWidth: 0.5};
 
         var topBlock = Bodies.rectangle(sceneWidth/2, topMargin, 10 * scale, 10 * scale, { collisionFilter: { group: group}, isStatic: true, render: {visible: false}});
-    
+
         var bottomBall = Bodies.circle(sceneWidth/2, 40 * scale + topMargin, 5 * scale, { collisionFilter: { group: group}, render: {fillStyle: color}});
-    
+
         var rope = Composites.stack(sceneWidth/2, 0, 38 * scale, 1, 10 * scale, 0, function(x, y) {
             return Bodies.rectangle(x, y, 4 * scale, 2 * scale, {collisionFilter: {group: group}, render: {fillStyle: color}});
         });
-    
+
         Composites.chain(rope, 0.5, 0, -0.5, 0, { stiffness: stiffness, length: 0, render: constraintRender, collisionFilter: { group: group } });
-    
+
         const topConstraint = Constraint.create({
             bodyA: topBlock,
             bodyB: rope.bodies[0],
@@ -64,7 +61,7 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
             collisionFilter: { group: group},
             render: constraintRender
         });
-    
+
         const bottomConstraint = Constraint.create({
             bodyB: bottomBall,
             bodyA: rope.bodies[rope.bodies.length-1],
@@ -93,6 +90,7 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
                 event.clientY <= bottomBall.bounds.max.y + rect.top + 20 * scale) {
                 bottomBall.isStatic = true;
                 bottomBall.dragging = true;
+                setIsHovered(true);
             }
         }
 
@@ -119,6 +117,7 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
                         body.render.fillStyle = color;
                     }
                 }
+                setIsHovered(false);
             }
         }
 
@@ -134,9 +133,16 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
                 const newY = Math.max(0, topBlock.position.y + Math.sin(angle) * (dist > maxRadius? maxRadius : dist));
                 
                 Body.setPosition(bottomBall, {x: newX, y: newY});
+            } else if (event.clientX >= bottomBall.bounds.min.x + rect.left - 20 * scale &&
+                event.clientX <= bottomBall.bounds.max.x + rect.left + 20 * scale &&
+                event.clientY >= bottomBall.bounds.min.y + rect.top - 20 * scale &&
+                event.clientY <= bottomBall.bounds.max.y + rect.top + 20 * scale) {
+                setIsHovered(true);
+            } else {
+                setIsHovered(false);
             }
         }
-    
+
         Engine.run(engine.current)
         Render.run(render)
 
@@ -158,8 +164,8 @@ const PullThemeSwitch = ({setThemeIndex}) =>{
         }
     })
 
-  return (
-      <div ref={scene}  style={{width: sceneWidth, height: sceneHeight}}/>
-  )
+    return (
+        <div ref={scene}  style={{width: sceneWidth, height: sceneHeight}}/>
+    )
 }
 export default memo(PullThemeSwitch, function(x, y){return true;})

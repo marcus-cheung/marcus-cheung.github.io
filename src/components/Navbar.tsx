@@ -4,9 +4,12 @@ import { Theme } from '../Themes';
 
 
 
-const Navbar = ({setThemeIndex, theme}) => {
+const Navbar = ({setThemeIndex, theme, setIsHovered}) => {
   const ButtonStyle = (link, comp) => {
-    return (<div onClick={() => {window.location.href = link}} className={`bg-repeat cursor-pointer px-10 py-4 flex justify-center items-center`} style={{background: theme.textures.secondary}}>
+    // return (<div onClick={() => {window.location.href = link}} className={`bg-repeat cursor-pointer px-10 py-4 flex justify-center items-center`} style={{background: theme.textures.secondary}}>
+    //   {comp}
+    //   </div>)
+    return (<div onClick={() => {window.location.href = link}} className={`border-4 cursor-pointer px-10 py-4 flex justify-center items-center hover:text-orange-500 transition duration-300 ease-in-out`}>
       {comp}
       </div>)
   }
@@ -18,7 +21,7 @@ const Navbar = ({setThemeIndex, theme}) => {
                       <img src={theme.assets.bulb} style={{width: '42px', minWidth: '42px', height: 'auto', userSelect: 'none'}}/>
                     </div>
   const pullstring = <div style={{position: 'absolute', right: '49px', top: '54px'}}>
-                  <PullThemeSwitch setThemeIndex={setThemeIndex}></PullThemeSwitch>
+                  <PullThemeSwitch setThemeIndex={setThemeIndex} setIsHovered={setIsHovered}></PullThemeSwitch>
                 </div>
   
   return (

@@ -20,7 +20,8 @@ const MoleFollower = ({themeIndex}) => {
 
     // Define animations
     function stand(character: any, delay: number = 0) {
-        gsap.to(character, {backgroundPositionX: `${-standFrame}px`, delay: delay, duration: 0, overwrite: 'auto'});
+        gsap.to(character, {backgroundPositionX: `${-standFrame}px`, delay: delay, duration: 0, overwrite: 'auto',
+        onComplete: function() {setGrounded(false); setLocked(false);}});
     }
 
     function walk(character: any, start: Coordinate, end: Coordinate, speed: number = 100) {
@@ -56,13 +57,13 @@ const MoleFollower = ({themeIndex}) => {
 
     function jump(character: any) {
         const jump = gsap.timeline().to(character, {backgroundPositionX: `${-jumpFrame}px`, duration: 0})
-                                    .to({}, {duration: 0.5, onComplete: function() {setGrounded(false); setLocked(false);}});
+                                    .to(character, {y: '-=48px', duration: 0.6})
+                                    .to(character, {y: '+=48px', ease: 'power2.out', duration: 0.4})
         jump.play();
     }
 
-    function dig(character: any) {
-        const dig = gsap.timeline().to(character, {backgroundPositionX: `${-jumpFrame}px`, duration: 0})
-                                    .to(character, {backgroundPositionX: `${-groundFrame}px`, duration: 0, delay: 0.5})
+    function dig(character: any, delay: number = 0) {
+        const dig = gsap.timeline().to(character, {backgroundPositionX: `${-groundFrame}px`, duration: 0, delay: delay})
                                     .to({}, {duration: 0.3, onComplete: function() {setGrounded(true); setLocked(false);}});
         dig.play();
     }
@@ -85,9 +86,10 @@ const MoleFollower = ({themeIndex}) => {
                     setLocked(true); // Lock animations
                     if (grounded) {
                         jump(character);
-                        stand(character, 0.3);
+                        stand(character, 0.9);
                     } else {
-                        dig(character);
+                        jump(character);
+                        dig(character, 0.9);
                     }
                 }
             }

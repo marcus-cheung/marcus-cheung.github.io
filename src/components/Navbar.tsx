@@ -1,42 +1,52 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PullThemeSwitch from './PullThemeSwitch';
-import { Theme } from '../Themes';
-
 
 //ff8c00
-const Navbar = ({setThemeIndex, theme, setCursorStyle}) => {
-  const ButtonStyle = (link, comp) => {
-    return (<div onClick={() => {window.location.href = link}}
-    className={`cursor-pointer text-center text-2xl px-4 py-4 flex justify-center items-center bg-no-repeat hover:bg-center hover:bg-contain`} style={{backgroundImage: `url(assets/images/icons/highlight_2.png)`}}>
-      {comp}
-      </div>)
-  }
+function Navbar({curTheme, setThemeIndex, setCursorStyle}) {
 
-  const logo = <a><strong>MARCUS</strong></a>;
+
+  const curHashRoute = window.location.hash;
+  const [hashRoute, setHashRoute] = useState(curHashRoute); // to force rerender
+  const baseStyle = 'cursor-pointer text-center text-2xl flex h-12 justify-center items-center bg-no-repeat '
+  const selectedStyle = baseStyle + 'bg-center bg-contain';
+  const unselectedStyle = baseStyle + 'hover:bg-center hover:bg-contain';
+  
+  function ButtonStyle({route, element, curHashRoute}) {
+    return (<div onClick={() => {setHashRoute(route); window.location.href = route;}} className={route.slice(1) === curHashRoute.slice(1) ? selectedStyle : unselectedStyle}
+              style={{backgroundImage: `url(assets/images/highlight.png)`}}>
+              {element}
+            </div>)
+  }
+  
+  const logo = <img src={curTheme.assets.frog} className='w-12 min-w-12 h-12 min-h-12 select-none' draggable={false}/>
   const projects = <a><strong>PROJECTS</strong></a>;
   const about = <a><strong>ABOUT</strong></a>;
   const contact = <a><strong>CONTACT</strong></a>;
   const lightbulb = <div className={`bg-repeat px-2 py-2 h-full flex justify-center items-center`}> 
-                      <img src={theme.assets.bulb} style={{width: '42px', minWidth: '42px', height: 'auto', userSelect: 'none'}}/>
+                      <img src={curTheme.assets.bulb} style={{width: '42px', minWidth: '42px', height: 'auto', userSelect: 'none'}} draggable={false}/>
                     </div>
-  const pullstring = <div style={{position: 'absolute', right: '49px', top: '54px'}}>
-                  <PullThemeSwitch setThemeIndex={setThemeIndex} setCursorStyle={setCursorStyle}></PullThemeSwitch>
-                </div>
-  
+  const pullstring = <div className="absolute top-12"> 
+                      <PullThemeSwitch setThemeIndex={setThemeIndex} setCursorStyle={setCursorStyle}></PullThemeSwitch>
+                    </div>
+  console.log("render")
+
   return (
-    <nav className={`absolute bg-repeat w-full h-20 flex px-16 justify-between items-center`} style={{background: theme.textures.secondary}}>
-         {ButtonStyle('#/', logo)}
-      <ul className='flex gap-6 items-center'>
+    <nav className={`bg-repeat w-full h-20 min-h-20 flex px-12 justify-between items-center`} style={{background: `url(${curTheme.textures.secondary})`}}>
+      <div onClick={() => {setHashRoute("#"); window.location.href = "#";}} className={"" === curHashRoute.slice(1) ? selectedStyle : unselectedStyle} style={{backgroundImage: `url(assets/images/highlight.png)`}}>
+        {logo}
+        {/* Can't use button style, causes flashing on rerender for some reason */}
+      </div>
+      <ul className='flex gap-12 ml-6 items-center'>
         <li>
-          {ButtonStyle('#/about', about)}
+          <ButtonStyle route='#projects' element={projects} curHashRoute={curHashRoute}></ButtonStyle>
         </li>
         <li>
-          {ButtonStyle('#/projects', projects)}
+          <ButtonStyle route='#about' element={about} curHashRoute={curHashRoute}></ButtonStyle>
         </li>
         <li>
-          {ButtonStyle('#/contact', contact)}
+          <ButtonStyle route='#contact' element={contact} curHashRoute={curHashRoute}></ButtonStyle>
         </li>
-        <li>
+        <li className='flex w-full h-full flex-col items-center'>
           {lightbulb}
           {pullstring}
         </li>

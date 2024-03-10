@@ -90,7 +90,7 @@ const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
                 event.clientY <= bottomBall.bounds.max.y + rect.top + 20 * scale) {
                 bottomBall.isStatic = true;
                 bottomBall.dragging = true;
-                setCursorStyle('grabbing');
+                setCursorStyle('cursor-grabbing');
             }
         }
 
@@ -117,7 +117,7 @@ const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
                         body.render.fillStyle = color;
                     }
                 }
-                setCursorStyle('default');
+                setCursorStyle('cursor-auto');
             }
         }
 
@@ -137,9 +137,9 @@ const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
                 event.clientX <= bottomBall.bounds.max.x + rect.left + 20 * scale &&
                 event.clientY >= bottomBall.bounds.min.y + rect.top - 20 * scale &&
                 event.clientY <= bottomBall.bounds.max.y + rect.top + 20 * scale) {
-                setCursorStyle('grab');
+                setCursorStyle('cursor-grab');
             } else {
-                setCursorStyle('default');
+                setCursorStyle('cursor-auto');
             }
         }
 

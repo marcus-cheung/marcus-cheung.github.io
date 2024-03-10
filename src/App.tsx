@@ -1,34 +1,32 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+
 import {themes} from './Themes'
-import Mole from './components/Mole'
-import MoleFollower from './components/MoleFollower'
 import {getCurrentTheme} from './Helpers';
+
 import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import Projects from './pages/Projects'
+import About from './pages/About'
+import Contact from './pages/Contact'
+
 
 const App: React.FC = () => {
   const [themeIndex, setThemeIndex] = useState(getCurrentTheme());
-  const [cursorStyle, setCursorStyle] = useState('default');
+  const [cursorStyle, setCursorStyle] = useState('cursor-auto');
   const curTheme = themes[themeIndex];
 
-  const social = (url, image) => {
-    return(<div className={'w-12 h-12 cursor-pointer bg-no-repeat hover:bg-contain hover:bg-center'} style={{backgroundImage: `url(assets/images/icons/highlight_2.png)`}} onClick={() => {window.open(url, '_blank')!.focus()}}>
-            <img src={image} className='w-12 h-12 min-w-12 min-h-12 object-cover top-0 left-0 select-none' draggable={false}/>
-          </div>
-      )
-  }
-
   return (
-    <div className={`h-screen w-screen bg-repeat overflow-hidden ${curTheme.colors.text}`} style={{backgroundImage: curTheme.textures.primary, cursor: cursorStyle}}>      
-      <Navbar setThemeIndex={setThemeIndex} theme={curTheme} setCursorStyle={setCursorStyle}></Navbar>
-      <div className='flex w-full h-full flex-col justify-center items-center'>
-        <p className='text-center text-8xl mb-2'><strong>Marcus Cheung</strong></p>
-        <p className='text-center text-3xl mb-5'><strong>Software Engineer</strong></p>
-        <div className='flex justify-between w-80 mb-8'>
-          {social('mailto: cheung.marcus@gmail.com', curTheme.assets.email)}
-          {social('https://www.linkedin.com/in/marcusjcheung/', curTheme.assets.linkedin)}
-          {social('https://github.com/marcus-cheung', curTheme.assets.github)}
-        </div>
-      </div>
+    <div className={`h-screen w-screen flex flex-col bg-repeat overflow-auto ${cursorStyle} ${curTheme.colors.text}`} style={{backgroundImage: `url(${curTheme.textures.primary})`}}>
+      <Navbar curTheme={curTheme} setThemeIndex={setThemeIndex} setCursorStyle={setCursorStyle}></Navbar>
+      <HashRouter> 
+        <Routes>
+          <Route path="/" element={<Home curTheme={curTheme}/>} />
+          <Route path="/projects" element={<Projects curTheme={curTheme}/>} />
+          <Route path="/about" element={<About curTheme={curTheme}/>} />
+          <Route path="/contact" element={<Contact curTheme={curTheme}/>} />
+        </Routes>
+      </HashRouter>
     </div>
     );
 };

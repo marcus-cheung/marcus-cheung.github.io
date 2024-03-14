@@ -1,58 +1,63 @@
 import React, {useState, useEffect} from 'react';
-import PullThemeSwitch from './PullThemeSwitch';
+import { Link as ScrollLink, Element, animateScroll as scroll } from 'react-scroll';
+import Mole from './Mole'
+
+
+function Social({url, image}) {
+  return(<div className={'w-9 h-9 cursor-pointer bg-no-repeat hover:bg-contain hover:bg-center'} style={{backgroundImage: `url(assets/images/highlight.png)`}} onClick={() => {window.open(url, '_blank')!.focus()}}>
+          <img src={image} className='w-9 h-9 min-w-9 min-h-9 object-cover top-0 left-0 select-none' draggable={false}/>
+        </div>
+    )
+}
 
 //ff8c00
 function Navbar({curTheme, setThemeIndex, setCursorStyle}) {
-
-
-  const curHashRoute = window.location.hash;
-  const [hashRoute, setHashRoute] = useState(curHashRoute); // to force rerender
-  const baseStyle = 'cursor-pointer text-center text-2xl flex h-12 justify-center items-center bg-no-repeat '
-  const selectedStyle = baseStyle + 'bg-center bg-contain';
-  const unselectedStyle = baseStyle + 'hover:bg-center hover:bg-contain';
-  
-  function ButtonStyle({route, element, curHashRoute}) {
-    return (<div onClick={() => {setHashRoute(route); window.location.href = route;}} className={route.slice(1) === curHashRoute.slice(1) ? selectedStyle : unselectedStyle}
-              style={{backgroundImage: `url(assets/images/highlight.png)`}}>
-              {element}
-            </div>)
+  function ButtonStyle({route, element}) {
+    return (<ScrollLink
+            activeClass="active"
+            to={route}
+            spy={true}
+            smooth={'easeInOutQuart'}
+            duration={100}>
+              <div onClick={() => {window.location.href = route;}} className={'relative cursor-pointer w-fit h-12 text-2xl flex items-center bg-no-repeat hover:bg-contain hover:bg-center'}
+                style={{backgroundImage: `url(assets/images/highlight.png)`}}>
+                {element}
+              </div>
+            </ScrollLink>)
   }
   
   const logo = <img src={curTheme.assets.frog} className='w-12 min-w-12 h-12 min-h-12 select-none' draggable={false}/>
-  const projects = <a><strong>PROJECTS</strong></a>;
-  const about = <a><strong>ABOUT</strong></a>;
-  const contact = <a><strong>CONTACT</strong></a>;
-  const lightbulb = <div className={`bg-repeat px-2 py-2 h-full flex justify-center items-center`}> 
-                      <img src={curTheme.assets.bulb} style={{width: '42px', minWidth: '42px', height: 'auto', userSelect: 'none'}} draggable={false}/>
-                    </div>
-  const pullstring = <div className="absolute top-12"> 
-                      <PullThemeSwitch setThemeIndex={setThemeIndex} setCursorStyle={setCursorStyle}></PullThemeSwitch>
-                    </div>
-  console.log("render")
-
+  const name =  <p>
+                  <strong className='text-4xl'>MARCUS</strong>
+                  <br/>
+                  Software Engineer
+                </p>;
+  const projects = <strong>PROJECTS</strong>;
+  const about = <strong>ABOUT</strong>;
+  const contact = <strong>CONTACT</strong>;
+  
   return (
-    <nav className={`bg-repeat w-full h-20 min-h-20 flex px-12 justify-between items-center`} style={{background: `url(${curTheme.textures.secondary})`}}>
-      <div onClick={() => {setHashRoute("#"); window.location.href = "#";}} className={"" === curHashRoute.slice(1) ? selectedStyle : unselectedStyle} style={{backgroundImage: `url(assets/images/highlight.png)`}}>
-        {logo}
-        {/* Can't use button style, causes flashing on rerender for some reason */}
+    <nav className={`z-10 sticky top-0 w-2/12 max-h-screen flex flex-col justify-evenly`}>
+      <p className=''>
+        <strong className='text-4xl'>MARCUS</strong>
+        <br/>
+        Software Engineer
+      </p>
+
+      <div>
+        <ButtonStyle route='#about' element={about}></ButtonStyle>
+        <ButtonStyle route='#projects' element={projects}></ButtonStyle>
       </div>
-      <ul className='flex gap-12 ml-6 items-center'>
-        <li>
-          <ButtonStyle route='#projects' element={projects} curHashRoute={curHashRoute}></ButtonStyle>
-        </li>
-        <li>
-          <ButtonStyle route='#about' element={about} curHashRoute={curHashRoute}></ButtonStyle>
-        </li>
-        <li>
-          <ButtonStyle route='#contact' element={contact} curHashRoute={curHashRoute}></ButtonStyle>
-        </li>
-        <li className='flex w-full h-full flex-col items-center'>
-          {lightbulb}
-          {pullstring}
-        </li>
-      </ul>
+        
+      <div className={'flex gap-4'}>
+        <Social url='mailto: cheung.marcus@gmail.com' image={curTheme.assets.email}></Social>
+        <Social url='https://www.linkedin.com/in/marcusjcheung/' image={curTheme.assets.linkedin}></Social>
+        <Social url='https://github.com/marcus-cheung' image={curTheme.assets.github}></Social>
+      </div>
+       
     </nav>
   );
 };
 
 export default Navbar;
+        

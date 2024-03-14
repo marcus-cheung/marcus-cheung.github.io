@@ -1,4 +1,4 @@
-function Home({curTheme}) {
+function ProjectWidget({curTheme}) {
     return (
       <div className='flex flex-col gap-7 h-full justify-center items-center pb-40'>
           <p className='text-center text-8xl'><strong>MARCUS CHEUNG</strong></p>
@@ -8,4 +8,4 @@ function Home({curTheme}) {
       );
   };
 
-export {};
+export default ProjectWidget;

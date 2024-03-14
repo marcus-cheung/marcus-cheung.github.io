@@ -17,7 +17,8 @@ const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
     const minAngle = 60 * Math.PI / 180.0;
     const maxAngle = 120 * Math.PI / 180.0;
 
-    const topMargin = maxRadius * 0.2;
+    // const topMargin = maxRadius * 0.2;
+    const topMargin = 0;
 
     const sceneWidth = thresh * 1.45;
     const sceneHeight = thresh * 1.6;
@@ -152,7 +153,9 @@ const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
         return () => {
             window.removeEventListener('mouseup', onUp);
             window.removeEventListener('mousemove', onMove);
-            scene.current.removeEventListener('mousedown', onDown);
+            if (scene.current) {
+                scene.current.removeEventListener('mousedown', onDown);
+            }
             Render.stop(render)
             World.clear(engine.current.world)
             Engine.clear(engine.current)
@@ -165,7 +168,7 @@ const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
     })
 
     return (
-        <div ref={scene}  style={{width: sceneWidth, height: sceneHeight}}/>
+        <div ref={scene}  style={{width: sceneWidth, height: sceneHeight}}></div>
     )
 }
 export default memo(PullThemeSwitch, function(x, y){return true;})

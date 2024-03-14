@@ -4,3 +4,7 @@
 /* html {
     background-color: #ff8c00;
   } */
+
+html {
+  scroll-behavior: smooth;
+}

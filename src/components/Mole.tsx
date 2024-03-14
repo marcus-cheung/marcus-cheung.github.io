@@ -31,7 +31,7 @@ const Mole = ({themeIndex}) => {
     const [walking, setWalking] = useState(false);
     const [origin, setOrigin] = useState<Coordinate>();
     const [locked, setLocked] = useState(false);
-    const topBounds = 80;
+    const topBounds = 0;
 
     // Define animations
     function stand(character: any, delay: number = 0, post_delay: number = 0) {

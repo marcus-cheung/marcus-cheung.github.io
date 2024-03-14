@@ -1,3 +1,4 @@
+import React from 'react';
 
 function Social({url, image}) {
   return(<div className={'w-12 h-12 cursor-pointer bg-no-repeat hover:bg-contain hover:bg-center'} style={{backgroundImage: `url(assets/images/highlight.png)`}} onClick={() => {window.open(url, '_blank')!.focus()}}>
@@ -8,13 +9,8 @@ function Social({url, image}) {
 
 function Home({curTheme}) {
   return (
-    <div className='flex flex-col gap-7 h-full justify-center items-center pb-40'>
-        <p className='text-center text-8xl'><strong>MARCUS CHEUNG</strong></p>
-        <div className='flex justify-between w-80'>
-            <Social url='mailto: cheung.marcus@gmail.com' image={curTheme.assets.email}></Social>
-            <Social url='https://www.linkedin.com/in/marcusjcheung/' image={curTheme.assets.linkedin}></Social>
-            <Social url='https://github.com/marcus-cheung' image={curTheme.assets.github}></Social>
-        </div>
+    <div className='border-4 w-full h-96 flex flex-col py-24 gap-7 items-center pb-96'>
+            <p className=''><strong>I'm a swe</strong></p>
     </div>
     );
 };

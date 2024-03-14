@@ -1,10 +1,14 @@
-function About({curTheme}) {
+import React from 'react';
 
+
+function About({curTheme}) {
   return (
-    <div className='flex w-full h-full flex-col gap-7 justify-center items-center pb-40'>
-        {/* <img src='assets/images/okja.png'></img> */}
-        <p className='text-center text-2xl'><strong>I'm a software engineer</strong></p>
-        <a className='text-4xl text-blue-500' href='assets/images/okja.png'>Click for Resume</a>
+    <div className='w-full h-fit flex flex-col py-24 gap-7 pb-40'>
+        <p className='text-2xl'>
+          I'm a software engineer working at Google.
+          <br/>
+          <a className='text-blue-500' href='assets/images/okja.png'>Click for Resume</a>
+        </p>
     </div>
     );
 };

@@ -1,9 +1,15 @@
+import React from 'react';
+
 function Projects({curTheme}) {
 
     return (
-      <div className='flex w-full h-full flex-col gap-7 justify-center items-center pb-40'>
-          <p className='text-center text-2xl'><strong>I have many projects</strong></p>
-      </div>
+        <div className='border-4 w-full h-fit flex flex-col py-24 gap-7 pb-40'>
+            <p className='text-2xl'>
+                Truckrzzz
+                <br/>
+                <a className='text-blue-500' href='assets/images/okja.png'>Click for link</a>
+            </p>
+        </div>
       );
   };
   export default Projects;

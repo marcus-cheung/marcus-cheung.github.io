@@ -3,11 +3,16 @@ import React from 'react';
 
 function About({curTheme}) {
   return (
-    <div className='w-full h-fit flex flex-col py-24 gap-7 pb-40'>
-        <p className='text-2xl'>
-          I'm a software engineer working at Google.
+    <div className='w-full h-fit flex flex-col'>
+        <img className='h-52 w-48' src='assets/images/icons/frog+skinny.png'></img>
+        <br/>
+        <p className='text-xl'>
+          Software Engineer @ Google
           <br/>
-          <a className='text-blue-500' href='assets/images/okja.png'>Click for Resume</a>
+          Computer Science @ UC Berkeley
+          <br/>
+          <a className='text-blue-500' href='assets/images/okja.png'>Click for resume</a>
+          <br></br>
         </p>
     </div>
     );

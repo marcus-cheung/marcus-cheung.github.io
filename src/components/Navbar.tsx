@@ -19,35 +19,30 @@ function Navbar({curTheme, setThemeIndex, setCursorStyle}) {
             spy={true}
             smooth={'easeInOutQuart'}
             duration={100}>
-              <div onClick={() => {window.location.href = route;}} className={'relative cursor-pointer w-fit h-12 text-2xl flex items-center bg-no-repeat hover:bg-contain hover:bg-center'}
+              <div onClick={() => {window.location.href = route;}} className={'cursor-pointer w-fit h-fit text-xl flex items-center bg-no-repeat hover:bg-contain'}
                 style={{backgroundImage: `url(assets/images/highlight.png)`}}>
                 {element}
               </div>
             </ScrollLink>)
   }
   
-  const logo = <img src={curTheme.assets.frog} className='w-12 min-w-12 h-12 min-h-12 select-none' draggable={false}/>
-  const name =  <p>
-                  <strong className='text-4xl'>MARCUS</strong>
-                  <br/>
-                  Software Engineer
-                </p>;
   const projects = <strong>PROJECTS</strong>;
   const about = <strong>ABOUT</strong>;
   const contact = <strong>CONTACT</strong>;
   
   return (
-    <nav className={`z-10 sticky top-0 w-2/12 max-h-screen flex flex-col justify-evenly`}>
-      <p className=''>
-        <strong className='text-4xl'>MARCUS</strong>
-        <br/>
-        Software Engineer
-      </p>
-
+    <nav className={`z-10 md:sticky top-0 ${curTheme.colors.text} md:mr-6 md:w-3/12 max-h-screen md:flex md:flex-col md:justify-between pt-20 md:pb-52 md:py-24`}>
       <div>
-        <ButtonStyle route='#about' element={about}></ButtonStyle>
-        <ButtonStyle route='#projects' element={projects}></ButtonStyle>
+        <p>
+          <strong className='text-5xl'>MARCUS CHEUNG</strong>
+        </p>
+
+        <div className={'md:mt-16 mb-2'}>
+          <ButtonStyle route='#about' element={about}></ButtonStyle>
+          <ButtonStyle route='#projects' element={projects}></ButtonStyle>
+        </div>
       </div>
+      
         
       <div className={'flex gap-4'}>
         <Social url='mailto: cheung.marcus@gmail.com' image={curTheme.assets.email}></Social>

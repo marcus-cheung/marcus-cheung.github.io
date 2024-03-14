@@ -2,6 +2,7 @@ export interface Theme {
   name: string;
   colors: {
     text: string;
+    text2: string;
   };
   assets: {
     bulb: string;
@@ -18,9 +19,10 @@ export interface Theme {
 
 export const themes: Theme[] = [
   {
-    name: "Light",
+    name: 'Light',
     colors: {
-      text: "text-black",
+      text: 'text-slate-950',
+      text2:  'text-slate-800'
     },
     assets: {
       bulb: 'assets/light/icons/lightbulb.png',
@@ -35,9 +37,10 @@ export const themes: Theme[] = [
     }
   },
   {
-    name: "Dark",
+    name: 'Dark',
     colors: {
-      text: "text-white",
+      text: 'text-slate-200',
+      text2:  'text-slate-300'
     },
     assets: {
       bulb: 'assets/dark/icons/lightbulb.png',

@@ -11,7 +11,7 @@ function Social({url, image}) {
 }
 
 //ff8c00
-function Navbar({curTheme, setThemeIndex, setCursorStyle}) {
+function Navbar({curTheme}) {
   function ButtonStyle({route, element}) {
     return (<ScrollLink
             activeClass="active"
@@ -19,27 +19,25 @@ function Navbar({curTheme, setThemeIndex, setCursorStyle}) {
             spy={true}
             smooth={'easeInOutQuart'}
             duration={100}>
-              <div onClick={() => {window.location.href = route;}} className={'cursor-pointer w-fit h-fit text-xl flex items-center bg-no-repeat hover:bg-contain'}
-                style={{backgroundImage: `url(assets/images/highlight.png)`}}>
+              <div onClick={() => {window.location.href = route;}} className='cursor-pointer w-fit group flex text-xl'> 
                 {element}
+                <div className={'relative left-0 w-6 h-6 text-xl flex items-center bg-no-repeat group-hover:bg-contain'}
+                  style={{backgroundImage: `url(assets/images/highlight.png)`}}>
+                </div>
               </div>
+              
             </ScrollLink>)
   }
-  
-  const work = <strong>WORK</strong>;
-  const about = <strong>ABOUT</strong>;
-  const contact = <strong>CONTACT</strong>;
-  
   return (
-    <nav className={`z-10 md:sticky top-0 ${curTheme.colors.text} md:mr-6 md:w-3/12 max-h-screen md:flex md:flex-col md:justify-between pt-20 md:pb-52 md:py-24`}>
+    <nav className={`z-10 md:sticky top-0 ${curTheme.colors.text} md:mr-6 md:w-3/12 max-h-screen md:flex md:flex-col md:justify-between pt-20 md:pb-52 md:pt-24`}>
       <div>
         <p>
           <strong className='text-5xl'>MARCUS CHEUNG</strong>
         </p>
 
         <div className={'md:mt-16 mb-2'}>
-          <ButtonStyle route='#about' element={about}></ButtonStyle>
-          <ButtonStyle route='#work' element={work}></ButtonStyle>
+          <ButtonStyle route='#about' element={<strong>ABOUT</strong>}></ButtonStyle>
+          <ButtonStyle route='#work' element={<strong>WORK</strong>}></ButtonStyle>
         </div>
       </div>
       

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, memo} from 'react'
+import React, { useEffect, useRef, memo} from 'react'
 import { Engine, Render, Body, Bodies, World, Composites, Composite, Constraint} from 'matter-js'
 import {themes} from '../Themes'
 import { getCurrentTheme, distance } from '../Helpers'
@@ -6,8 +6,10 @@ import { getCurrentTheme, distance } from '../Helpers'
 
   
 
-const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
+const LightBulb = ({setThemeIndex, curTheme, setCursorStyle}) =>{
     const scene = useRef<any>();
+    const bulbRef = useRef<any>();
+    const switchThemeRef = useRef<any>();
     const scale = 0.3;
 
     const engine = useRef(Engine.create({gravity: {y: 1 * scale}, timing: {timeScale: 2}}));
@@ -23,7 +25,7 @@ const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
     const sceneWidth = thresh * 1.45;
     const sceneHeight = thresh * 1.6;
     const stiffness = 0.55;
-
+    var switchTheme;
 
     useEffect(() => {
         const render = Render.create({
@@ -39,8 +41,8 @@ const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
             })
 
         var group = Body.nextGroup(true);
-
-        const color = getCurrentTheme() ? 'white': 'black';
+        const curTheme = getCurrentTheme();
+        const color = curTheme ? 'white' : 'black';
         
         const constraintRender = {type: 'line', strokeStyle: color, lineWidth: 0.5};
 
@@ -95,6 +97,26 @@ const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
             }
         }
 
+        function switchTheme() {
+            const newIndex = (getCurrentTheme() + 1) % themes.length;
+            localStorage.setItem("themeIndex", JSON.stringify(newIndex));
+            setThemeIndex(newIndex);
+            const newColor = newIndex ? 'white' : 'black';
+            topBlock.render.fillStyle = newColor;
+            topConstraint.render.strokeStyle = newColor;
+            bottomConstraint.render.strokeStyle = newColor;
+            bottomBall.render.fillStyle = newColor;
+            for (const constraint of Composite.allConstraints(rope)) {
+                constraint.render.strokeStyle = newColor;
+            }
+            for (const body of rope.bodies) {
+                body.render.fillStyle = newColor;
+            }
+            console.log(switchTheme)
+            bulbRef.current.src = themes[newIndex].assets.bulb;
+        }
+        switchThemeRef.current = switchTheme;
+
         const onUp = (event) => {
             if (bottomBall.dragging) {
                 bottomBall.dragging = false;
@@ -102,21 +124,7 @@ const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
                 const dist = distance({X: topBlock.position.x, Y: topBlock.position.y},
                                         {X: bottomBall.position.x, Y: bottomBall.position.y})
                 if (dist > thresh) {// Below the relative threshold
-                    const newIndex = (getCurrentTheme() + 1) % themes.length
-                    localStorage.setItem("themeIndex", JSON.stringify(newIndex));
-                    setThemeIndex(newIndex);
-                    const color = newIndex ? 'white': 'black';
-                    topBlock.render.fillStyle = color;
-                    topConstraint.render.strokeStyle = color;
-                    bottomConstraint.render.strokeStyle = color;
-                    bottomBall.render.fillStyle = color;
-                    for (const constraint of Composite.allConstraints(rope)) {
-                        constraint.render.strokeStyle = color;
-                    }
-
-                    for (const body of rope.bodies) {
-                        body.render.fillStyle = color;
-                    }
+                    switchTheme();
                 }
                 setCursorStyle('cursor-auto');
             }
@@ -163,12 +171,13 @@ const PullThemeSwitch = ({setThemeIndex, setCursorStyle}) =>{
             render.canvas = null
             render.context = null
             render.textures = {};
-            
         }
     })
 
-    return (
-        <div ref={scene}  style={{width: sceneWidth, height: sceneHeight}}></div>
+    return (<div className='fixed right-0 md:sticky top-0 pt-6 flex h-fit flex-col justify-center items-center cursor-pointer'>
+                <img ref={bulbRef} src={curTheme.assets.bulb} className='w-12 min-w-12 h-auto select-none' draggable={false} onClick={switchThemeRef.current}/>
+                <div ref={scene}  style={{width: sceneWidth, height: sceneHeight}}></div>
+            </div>
     )
 }
-export default memo(PullThemeSwitch, function(x, y){return true;})
+export default memo(LightBulb, function(x, y){return true;})

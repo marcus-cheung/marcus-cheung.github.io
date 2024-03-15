@@ -8,3 +8,10 @@
 html {
   scroll-behavior: smooth;
 }
+
+@font-face {
+  font-family: 'CascadiaCode'; 
+  src: url('../public/fonts/CascadiaCode/ttf/static/CascadiaCode-Regular.ttf') format('truetype'),
+       url('../public/fonts/CascadiaCode/ttf/static/CascadiaCode-Bold.ttf') format('truetype') weight 700,
+       url('../public/fonts/CascadiaCode/ttf/static/CascadiaCode-Italic.ttf') format('truetype') style="italic";
+}

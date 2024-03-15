@@ -26,7 +26,7 @@ function Navbar({curTheme, setThemeIndex, setCursorStyle}) {
             </ScrollLink>)
   }
   
-  const projects = <strong>PROJECTS</strong>;
+  const work = <strong>WORK</strong>;
   const about = <strong>ABOUT</strong>;
   const contact = <strong>CONTACT</strong>;
   
@@ -39,7 +39,7 @@ function Navbar({curTheme, setThemeIndex, setCursorStyle}) {
 
         <div className={'md:mt-16 mb-2'}>
           <ButtonStyle route='#about' element={about}></ButtonStyle>
-          <ButtonStyle route='#projects' element={projects}></ButtonStyle>
+          <ButtonStyle route='#work' element={work}></ButtonStyle>
         </div>
       </div>
       

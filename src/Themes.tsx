@@ -10,6 +10,7 @@ export interface Theme {
     linkedin: string;
     github: string;
     frog: string;
+    computer: string;
   };
   textures: {
     primary: string;
@@ -29,7 +30,8 @@ export const themes: Theme[] = [
       email: 'assets/light/icons/email.png',
       linkedin: 'assets/light/icons/linkedin.png',
       github: 'assets/light/icons/github.png',
-      frog: 'assets/light/icons/frog.png'
+      frog: 'assets/light/icons/frog.png',
+      computer: 'assets/light/icons/computer.png'
     },
     textures: {
       primary: 'assets/light/textures/cloth_hoz.png',
@@ -39,7 +41,7 @@ export const themes: Theme[] = [
   {
     name: 'Dark',
     colors: {
-      text: 'text-slate-200',
+      text: 'text-slate-100',
       text2:  'text-slate-300'
     },
     assets: {
@@ -47,7 +49,8 @@ export const themes: Theme[] = [
       email: 'assets/dark/icons/email.png',
       linkedin: 'assets/dark/icons/linkedin.png',
       github: 'assets/dark/icons/github.png',
-      frog: 'assets/dark/icons/frog.png'
+      frog: 'assets/dark/icons/frog.png',
+      computer: 'assets/dark/icons/computer.png'
     },
     textures: {
       primary: 'assets/dark/textures/cloth_hoz.png',

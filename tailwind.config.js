@@ -12,6 +12,9 @@ module.exports = {
         backgroundSize: {
           full: '100%'
         }
+      },
+      fontFamily: {
+        Cascadia: ["CascadiaCode", "sans-serif"]
       }
     },
   },

@@ -32,6 +32,8 @@ const Mole = ({themeIndex}) => {
     const [origin, setOrigin] = useState<Coordinate>();
     const [locked, setLocked] = useState(false);
     const topBounds = 0;
+    const leftBounds = 0;
+    const rightBounds = 18;
 
     // Define animations
     function stand(character: any, delay: number = 0, post_delay: number = 0) {
@@ -93,7 +95,7 @@ const Mole = ({themeIndex}) => {
         
         function getStartEnd(eventCoords, characterRect) {
             const start = getCenter(characterRect);
-            const boundedCoords = {X: Math.max(spriteDim.W / 2, Math.min(window.innerWidth + window.scrollX - spriteDim.W / 2, eventCoords.X)),
+            const boundedCoords = {X: Math.max(spriteDim.W / 2 + leftBounds, Math.min(window.innerWidth + window.scrollX - spriteDim.W / 2 - rightBounds, eventCoords.X)),
                                             Y: Math.max(spriteDim.H / 2 + topBounds, Math.min(window.innerHeight + window.scrollY - spriteDim.H / 2, eventCoords.Y))};
             const end = getRelativeToCenter(characterRect, boundedCoords);
             start.X -= spriteDim.W / 2 + origin!.X;

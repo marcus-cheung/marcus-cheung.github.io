@@ -25,7 +25,6 @@ const LightBulb = ({setThemeIndex, curTheme, setCursorStyle}) =>{
     const sceneWidth = thresh * 1.45;
     const sceneHeight = thresh * 1.6;
     const stiffness = 0.55;
-    var switchTheme;
 
     useEffect(() => {
         const render = Render.create({
@@ -112,10 +111,8 @@ const LightBulb = ({setThemeIndex, curTheme, setCursorStyle}) =>{
             for (const body of rope.bodies) {
                 body.render.fillStyle = newColor;
             }
-            console.log(switchTheme)
             bulbRef.current.src = themes[newIndex].assets.bulb;
         }
-        switchThemeRef.current = switchTheme;
 
         const onUp = (event) => {
             if (bottomBall.dragging) {
@@ -154,13 +151,16 @@ const LightBulb = ({setThemeIndex, curTheme, setCursorStyle}) =>{
 
         Engine.run(engine.current)
         Render.run(render)
-
+        bulbRef.current.addEventListener('click', switchTheme);
         window.addEventListener('mouseup', onUp);
         window.addEventListener('mousemove', onMove);
         scene.current.addEventListener('mousedown', onDown);
         return () => {
             window.removeEventListener('mouseup', onUp);
             window.removeEventListener('mousemove', onMove);
+            if (bulbRef.current) {
+                bulbRef.current.removeEventListener('click', switchTheme);
+            }
             if (scene.current) {
                 scene.current.removeEventListener('mousedown', onDown);
             }
@@ -175,7 +175,7 @@ const LightBulb = ({setThemeIndex, curTheme, setCursorStyle}) =>{
     })
 
     return (<div className='fixed right-0 md:sticky top-0 pt-6 flex h-fit flex-col justify-center items-center cursor-pointer'>
-                <img ref={bulbRef} src={curTheme.assets.bulb} className='w-12 min-w-12 h-auto select-none' draggable={false} onClick={switchThemeRef.current}/>
+                <img ref={bulbRef} src={curTheme.assets.bulb} className='w-12 min-w-12 h-auto select-none' draggable={false}/>
                 <div ref={scene}  style={{width: sceneWidth, height: sceneHeight}}></div>
             </div>
     )

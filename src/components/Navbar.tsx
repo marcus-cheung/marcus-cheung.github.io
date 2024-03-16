@@ -4,9 +4,9 @@ import Mole from './Mole'
 
 
 function Social({url, image}) {
-  return(<div className={'w-9 h-9 cursor-pointer bg-no-repeat hover:bg-contain hover:bg-center'} style={{backgroundImage: `url(assets/images/highlight.png)`}} onClick={() => {window.open(url, '_blank')!.focus()}}>
+  return(<a className={'w-9 h-9 cursor-pointer bg-no-repeat hover:bg-contain hover:bg-center'} style={{backgroundImage: `url(assets/images/highlight.png)`}} href={url} target="_blank">
           <img src={image} className='w-9 h-9 min-w-9 min-h-9 object-cover top-0 left-0 select-none' draggable={false}/>
-        </div>
+        </a>
     )
 }
 
@@ -19,17 +19,17 @@ function Navbar({curTheme}) {
             spy={true}
             smooth={'easeInOutQuart'}
             duration={100}>
-              <div onClick={() => {window.location.href = route;}} className='cursor-pointer w-fit group flex text-xl'> 
-                {element}
-                <div className={'relative left-0 w-6 h-6 text-xl flex items-center bg-no-repeat group-hover:bg-contain'}
+              <div onClick={() => {window.location.href = route;}} className='relative cursor-pointer w-fit group flex text-xl'> 
+                <div className={'absolute left-[-24px] w-6 h-6 text-xl flex items-center bg-no-repeat group-hover:bg-contain'}
                   style={{backgroundImage: `url(assets/images/highlight.png)`}}>
                 </div>
+                {element}
               </div>
               
             </ScrollLink>)
   }
   return (
-    <nav className={`z-10 md:sticky top-0 ${curTheme.colors.text} md:mr-6 md:w-3/12 max-h-screen md:flex md:flex-col md:justify-between pt-20 md:pb-52 md:pt-24`}>
+    <nav className={`z-10 md:sticky top-0 ${curTheme.colors.text} md:mr-6 md:w-3/12 max-h-screen md:flex md:flex-col md:justify-between pt-12 md:pt-20 md:pb-52 md:pt-24`}>
       <div>
         <p>
           <strong className='text-5xl'>MARCUS CHEUNG</strong>
@@ -38,6 +38,10 @@ function Navbar({curTheme}) {
         <div className={'md:mt-16 mb-2'}>
           <ButtonStyle route='#about' element={<strong>ABOUT</strong>}></ButtonStyle>
           <ButtonStyle route='#work' element={<strong>WORK</strong>}></ButtonStyle>
+          <ButtonStyle route='#projects' element={<strong>PROJECTS</strong>}></ButtonStyle>
+          <ButtonStyle route='#mole' element={<strong>MONTY?</strong>}></ButtonStyle>
+
+
         </div>
       </div>
       

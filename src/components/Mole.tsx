@@ -83,13 +83,15 @@ const Mole = ({themeIndex}) => {
         dig.play();
     }
 
+    // function init(){
+    //     const characterRect = getBoundingPageRect(character);
+    //     setOrigin({X: characterRect.left, Y: characterRect.top}); // init origin
+    //     console.log(origin)
+    // }
+
     
     useEffect(() => {
         const character = characterRef.current;
-        if (!origin) {
-            const characterRect = getBoundingPageRect(character);
-            setOrigin({X: characterRect.left, Y: characterRect.top}); // init origin
-        }
         // set correct theme
         gsap.to(character, {backgroundPositionY: `${-themeIndex * spriteDim.H}px`, duration: 0});
         
@@ -106,6 +108,9 @@ const Mole = ({themeIndex}) => {
         }
 
         const onMove = (event) => {
+            if (!origin) {
+                return;
+            }
             if (!walking && !grounded) {
                 const eventCoords = {X: event.pageX, Y: event.pageY};
                 const characterRect = getBoundingPageRect(character);
@@ -116,6 +121,9 @@ const Mole = ({themeIndex}) => {
         }
 
         const onClick = (event) => {
+            if (!origin) {
+                return;
+            }
             const eventCoords = {X: event.pageX, Y: event.pageY};
             const characterRect = getBoundingPageRect(character);
             const [start, end] = getStartEnd(eventCoords, characterRect);
@@ -137,9 +145,21 @@ const Mole = ({themeIndex}) => {
                 }
             }
         }
+        function init() {
+            if (!origin) {
+                const characterRect = getBoundingPageRect(character);
+                setOrigin({X: characterRect.left, Y: characterRect.top}); // init origin
+            }
+        }
+        // init() required because of render delay messing up origin computation
+        if (!origin) {
+            const t = setTimeout(init, 1000);
+        }
 
         window.addEventListener('click', onClick);
         window.addEventListener('mousemove', onMove);
+
+        
         return () => {
             window.removeEventListener('click', onClick);
             window.removeEventListener('mousemove', onMove);
@@ -153,3 +173,4 @@ const Mole = ({themeIndex}) => {
 };
 
 export default Mole;
+// export default memo(Mole, function(x, y){return true;})

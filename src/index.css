@@ -11,7 +11,13 @@ html {
 
 @font-face {
   font-family: 'CascadiaCode'; 
-  src: url('../public/fonts/CascadiaCode/ttf/static/CascadiaCode-Regular.ttf') format('truetype'),
+  src: url('../public/fonts/CascadiaCode/otf/static/CascadiaCode-Regular.otf') format('truetype'),
+       url('../public/fonts/CascadiaCode/ttf/static/CascadiaCode-Regular.ttf') format('truetype'),
+       url('../public/fonts/CascadiaCode/woff2/static/CascadiaCode-Regular.woff2') format('truetype'),
+       url('../public/fonts/CascadiaCode/otf/static/CascadiaCode-Bold.otf') format('truetype') weight 700,
        url('../public/fonts/CascadiaCode/ttf/static/CascadiaCode-Bold.ttf') format('truetype') weight 700,
-       url('../public/fonts/CascadiaCode/ttf/static/CascadiaCode-Italic.ttf') format('truetype') style="italic";
+       url('../public/fonts/CascadiaCode/woff2/static/CascadiaCode-Bold.woff2') format('truetype') weight 700,
+       url('../public/fonts/CascadiaCode/otf/static/CascadiaCode-Italic.otf') format('truetype') style="italic",
+       url('../public/fonts/CascadiaCode/ttf/static/CascadiaCode-Italic.ttf') format('truetype') style="italic",
+       url('../public/fonts/CascadiaCode/woff2/static/CascadiaCode-Italic.woff2') format('truetype') style="italic";
 }

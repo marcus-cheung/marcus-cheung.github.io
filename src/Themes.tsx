@@ -22,8 +22,8 @@ export const themes: Theme[] = [
   {
     name: 'Light',
     colors: {
-      text: 'text-slate-950',
-      text2:  'text-slate-800'
+      text: 'text-slate-900',
+      text2:  'text-slate-700'
     },
     assets: {
       bulb: 'assets/light/icons/lightbulb.png',

@@ -83,13 +83,6 @@ const Mole = ({themeIndex}) => {
         dig.play();
     }
 
-    // function init(){
-    //     const characterRect = getBoundingPageRect(character);
-    //     setOrigin({X: characterRect.left, Y: characterRect.top}); // init origin
-    //     console.log(origin)
-    // }
-
-    
     useEffect(() => {
         const character = characterRef.current;
         // set correct theme
@@ -145,6 +138,7 @@ const Mole = ({themeIndex}) => {
                 }
             }
         }
+        
         function init() {
             if (!origin) {
                 const characterRect = getBoundingPageRect(character);

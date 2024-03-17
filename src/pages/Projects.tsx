@@ -4,12 +4,12 @@ const hover = <div className={'absolute left-[-24px] w-6 h-6 text-xl flex items-
                 style={{backgroundImage: `url(assets/images/highlight.png)`}}>
                 </div>
 
-const divStyle = 'flex flex-col border-2 relative group cursor-pointer w-fit h-fit';
+const divStyle = 'flex flex-col relative group cursor-pointer w-fit h-fit';
 
 function Projects({curTheme}) {
 
     return (
-        <div className='w-full h-fit flex flex-col gap-6'>
+        <div className='w-full h-fit flex flex-col gap-4'>
             <p>Some of the projects i've worked on.</p>
             <a className={divStyle} href='https://devpost.com/software/truckrzzz' target="_blank">
                 {hover}

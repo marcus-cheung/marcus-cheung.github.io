@@ -8,7 +8,7 @@ const lineStyle = 'group cursor-pointer flex relative';
 
 function Work({curTheme}) {
     return (
-        <div className='w-full h-fit flex flex-col gap-6 text-lg'>
+        <div className='w-full h-fit flex flex-col gap-4 text-lg'>
             <p>These are all the places i've worked so far.<br/>click on an experience to learn more!</p>
             <div className='flex flex-col w-fit h-fit'>
                 <div className='w-full'>

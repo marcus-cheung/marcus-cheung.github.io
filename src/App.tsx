@@ -11,7 +11,7 @@ import Projects from './pages/Projects'
 import LightBulb from './components/LightBulb';
 import Mole from './components/Mole'
 
-const margin = <div className='h-16 mt-16'></div>
+const margin = <div className='h-24 mt-12'></div>
 
 const App: React.FC = () => {
   const [themeIndex, setThemeIndex] = useState(getCurrentTheme());

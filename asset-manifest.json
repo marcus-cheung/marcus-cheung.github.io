@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.c69c47f5.css",
-    "main.js": "/static/js/main.7bed5ef5.js",
+    "main.js": "/static/js/main.18ac0e61.js",
     "static/media/CascadiaCode-Bold.ttf": "/static/media/CascadiaCode-Bold.a84155701c07a1680072.ttf",
     "static/media/CascadiaCode-Regular.ttf": "/static/media/CascadiaCode-Regular.dbe401bc61b0a4fe4f2d.ttf",
     "static/media/CascadiaCode-Italic.ttf": "/static/media/CascadiaCode-Italic.c7d914630dee3e4c3489.ttf",
@@ -13,10 +13,10 @@
     "static/media/CascadiaCode-Italic.woff2": "/static/media/CascadiaCode-Italic.7f8253868db54680e58a.woff2",
     "index.html": "/index.html",
     "main.c69c47f5.css.map": "/static/css/main.c69c47f5.css.map",
-    "main.7bed5ef5.js.map": "/static/js/main.7bed5ef5.js.map"
+    "main.18ac0e61.js.map": "/static/js/main.18ac0e61.js.map"
   },
   "entrypoints": [
     "static/css/main.c69c47f5.css",
-    "static/js/main.7bed5ef5.js"
+    "static/js/main.18ac0e61.js"
   ]
 }

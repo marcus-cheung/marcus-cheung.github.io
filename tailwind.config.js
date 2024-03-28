@@ -14,7 +14,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        Cascadia: ["CascadiaCode", "sans-serif"]
+        Cascadia: ['CascadiaCode', "sans-serif"]
       }
     },
   },

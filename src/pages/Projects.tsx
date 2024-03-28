@@ -10,7 +10,7 @@ function Projects({curTheme}) {
 
     return (
         <div className='w-full h-fit flex flex-col gap-4'>
-            <p>Some of the projects i've worked on.</p>
+            <p>Projects I've worked on.</p>
             <a className={divStyle} href='https://devpost.com/software/truckrzzz' target="_blank">
                 {hover}
                 <strong className={`${curTheme.colors.text}`}>TRUCKRZZZ</strong>

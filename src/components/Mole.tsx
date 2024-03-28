@@ -143,12 +143,14 @@ const Mole = ({themeIndex}) => {
             if (!origin) {
                 const characterRect = getBoundingPageRect(character);
                 setOrigin({X: characterRect.left, Y: characterRect.top}); // init origin
+                gsap.to(character, {x: 400, y: document.body.scrollHeight + 150, duration: 0, onComplete: function(){character.style.visibility = 'visible';}});
             }
         }
-        // init() required because of render delay messing up origin computation
-        if (!origin) {
-            const t = setTimeout(init, 1000);
-        }
+        init()
+        // // init() required because of render delay messing up origin computation
+        // if (!origin) {
+        //     const t = setTimeout(init, 1000);
+        // }
 
         window.addEventListener('click', onClick);
         window.addEventListener('mousemove', onMove);
@@ -162,7 +164,7 @@ const Mole = ({themeIndex}) => {
     
     
     return (
-        <div ref={characterRef} className='cursor-pointer' style={{backgroundImage: 'url(assets/images/sprites/mole_sheet_3x.png)', width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}></div>
+        <div ref={characterRef} className='absolute top-0 left-0 invisible cursor-pointer' style={{backgroundImage: 'url(assets/images/sprites/mole_sheet_3x.png)', width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}></div>
     );
 };
 

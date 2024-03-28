@@ -29,24 +29,22 @@ function Navbar({curTheme}) {
             </ScrollLink>)
   }
   return (
-    <nav className={`z-10 md:sticky top-0 ${curTheme.colors.text} md:mr-6 md:w-3/12 max-h-screen md:flex md:flex-col md:justify-between pt-12 md:pt-20 md:pb-52 md:pt-24`}>
+    <nav className={`w-11/12 z-10 md:sticky top-0 ${curTheme.colors.text} md:mr-6 md:w-3/12 max-h-screen md:flex md:flex-col md:justify-between pt-12 md:pt-20 md:pb-52 md:pt-24`}>
       <div>
         <p>
           <strong className='text-5xl'>MARCUS CHEUNG</strong>
         </p>
 
-        <div className={'md:mt-16 mb-2'}>
+        <div className={'md:mt-16 mt-4 flex md:flex-col justify-between mb-2'}>
           <ButtonStyle route='#about' element={<strong>ABOUT</strong>}></ButtonStyle>
           <ButtonStyle route='#work' element={<strong>WORK</strong>}></ButtonStyle>
           <ButtonStyle route='#projects' element={<strong>PROJECTS</strong>}></ButtonStyle>
           <ButtonStyle route='#mole' element={<strong>MONTY?</strong>}></ButtonStyle>
-
-
         </div>
       </div>
       
         
-      <div className={'flex gap-4'}>
+      <div className={'flex gap-4 justify-start'}>
         <Social url='mailto: cheung.marcus@gmail.com' image={curTheme.assets.email}></Social>
         <Social url='https://www.linkedin.com/in/marcusjcheung/' image={curTheme.assets.linkedin}></Social>
         <Social url='https://github.com/marcus-cheung' image={curTheme.assets.github}></Social>

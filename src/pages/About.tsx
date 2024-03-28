@@ -12,7 +12,7 @@ function About({curTheme}) {
           Computer Science @ UC Berkeley
           <img className="inline-flex items-baseline w-6 self-center ml-2 mb-1" src="assets/images/icons/oski.gif" alt=""/>
           <br/>
-          <a className='text-blue-500' href='assets/images/okja.png'>Resume</a>
+          <a className='text-blue-500' href='assets/images/okja.png' target='_blank'>Resume</a>
         </p>
     </div>
     );

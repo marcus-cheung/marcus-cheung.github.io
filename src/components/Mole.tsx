@@ -143,7 +143,10 @@ const Mole = ({themeIndex}) => {
             if (!origin) {
                 const characterRect = getBoundingPageRect(character);
                 setOrigin({X: characterRect.left, Y: characterRect.top}); // init origin
-                gsap.to(character, {x: 400, y: document.body.scrollHeight + 150, duration: 0, onComplete: function(){character.style.visibility = 'visible';}});
+                // gsap.to(character, {x: 400, y: document.body.scrollHeight + 150, duration: 0, onComplete: function(){character.style.visibility = 'visible';}});
+                gsap.to(character, {x: 220, y: 80, duration: 0, onComplete: function(){character.style.visibility = 'visible';}});
+                
+                character.style.visibility = 'visible';
             }
         }
         init()

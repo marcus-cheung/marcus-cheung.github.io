@@ -10,8 +10,10 @@ import Work from './pages/Work'
 import Projects from './pages/Projects'
 import LightBulb from './components/LightBulb';
 import Mole from './components/Mole'
+
+const divider = <img className='select-none' src='assets/dividers/pixels.gif' draggable='false'></img>
 const margin = <div className='relative h-10 md:left-[-12px] justify-center items-center flex my-8 w-full'>
-  <img src='assets/dividers/pixels.gif'></img>
+  {divider}
 </div>
 
 const App: React.FC = () => {
@@ -26,7 +28,7 @@ const App: React.FC = () => {
                 <div className='h-fit text-lg w-96'>
                   <Element id='about'>
                     <div className='relative h-10 md:h-24 md:left-[-12px] justify-center items-center flex my-8 md:my-0 w-full md:collapse'>
-                      <img src='assets/dividers/pixels.gif'></img>
+                      {divider}
                     </div>
                     <About curTheme={curTheme}/>
                   </Element>

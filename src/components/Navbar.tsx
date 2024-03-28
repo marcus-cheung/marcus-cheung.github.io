@@ -20,10 +20,13 @@ function Navbar({curTheme}) {
             smooth={'easeInOutQuart'}
             duration={100}>
               <div onClick={() => {window.location.href = route;}} className='relative cursor-pointer w-fit group flex text-xl'> 
-                <div className={'absolute left-[-24px] w-6 h-6 text-xl flex items-center bg-no-repeat group-hover:bg-contain'}
+                <div className={'absolute left-[-24px] w-6 h-6 flex items-center bg-no-repeat md:group-hover:bg-contain'}
                   style={{backgroundImage: `url(assets/images/highlight.png)`}}>
                 </div>
-                {element}
+                <div className='w-fit bg-no-repeat hover:bg-contain md:hover:bg-auto hover:bg-center md:hover:bg-right'
+                  style={{backgroundImage: `url(assets/images/highlight.png)`}}>
+                  {element}
+                </div>
               </div>
               
             </ScrollLink>)
@@ -35,16 +38,16 @@ function Navbar({curTheme}) {
           <strong className='text-5xl'>MARCUS CHEUNG</strong>
         </p>
 
-        <div className={'md:mt-16 mt-4 flex md:flex-col justify-between mb-2'}>
+        <div className={'flex gap-8 md:mt-16 mt-3 md:flex-col md:gap-4 mb-2'}>
           <ButtonStyle route='#about' element={<strong>ABOUT</strong>}></ButtonStyle>
           <ButtonStyle route='#work' element={<strong>WORK</strong>}></ButtonStyle>
           <ButtonStyle route='#projects' element={<strong>PROJECTS</strong>}></ButtonStyle>
-          <ButtonStyle route='#mole' element={<strong>MONTY?</strong>}></ButtonStyle>
+          {/* <ButtonStyle route='#mole' element={<strong>MONTY?</strong>}></ButtonStyle> */}
         </div>
       </div>
       
         
-      <div className={'flex gap-4 justify-start'}>
+      <div className={'flex gap-4 justify-start md:pb-52'}>
         <Social url='mailto: cheung.marcus@gmail.com' image={curTheme.assets.email}></Social>
         <Social url='https://www.linkedin.com/in/marcusjcheung/' image={curTheme.assets.linkedin}></Social>
         <Social url='https://github.com/marcus-cheung' image={curTheme.assets.github}></Social>

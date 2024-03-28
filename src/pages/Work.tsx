@@ -7,7 +7,7 @@ const experiences = [
         link: 'https://about.google/',
         roles: [
             {
-                year: 'incoming',
+                year: '2024',
                 title: 'swe L3',
                 description:<div>
                                 <a className='text-blue-500' href='https://privacysandbox.com/' target='_blank'>Privacy Sandbox</a>

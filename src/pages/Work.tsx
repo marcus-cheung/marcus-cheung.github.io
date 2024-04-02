@@ -7,31 +7,34 @@ const experiences = [
         roles: [
             {
                 year: '2024',
-                title: 'Software Engineer L3',
+                title: 'SWE L3',
                 description:<div>
-                                Team: <a className='text-blue-500' href='https://privacysandbox.com/' target='_blank'>Privacy Sandbox</a>
+                                <a className='text-blue-500' href='https://privacysandbox.com/' target='_blank'>Privacy Sandbox</a>
                                 <br/>
                                 Incoming.
-                            </div>
+                            </div>,
+                frameworks: ['TypeScript', 'HTML', 'React', 'Node.js', 'Next.js', 'Tailwind CSS']
                 
             },
             {
                 year: '2023',
                 title: 'SWE Intern',
-                description: <div>
-                                Team: <a className='text-blue-500' href='https://arvr.google.com/' target='_blank'>AR Experiences</a>
+                description:<div>
+                                <a className='text-blue-500' href='https://arvr.google.com/' target='_blank'>AR Experiences</a>
                                 <br/>
                                 Optimized an ear landmark ML model for mobile devices, used in virtual try-on and to supplement facial landmarking research.
-                            </div>
+                            </div>,
+                frameworks: ['Python', 'C++', 'OpenCV', 'CUDA', 'TensorFlow', 'PIL', 'Pandas', 'Matplotlib', 'Colab', 'MediaPipe', 'NumPy', 'abseil', 'blaze']
             },
             {
                 year: '2022',
                 title: 'STEP Intern',
-                description: <div>
-                                Team: <a className='text-blue-500' href='https://pay.google.com/about/' target='_blank'>GPay</a>
+                description:<div>
+                                <a className='text-blue-500' href='https://pay.google.com/about/' target='_blank'>GPay</a>
                                 <br/>
                                 Streamlined external API integration, resulting in the deprecation of magic value-based sandboxing and greater testing coverage.
-                            </div>
+                            </div>,
+                frameworks: ['Java', 'Protocol Buffers', 'JSON']
             }
         ]
     },
@@ -42,7 +45,8 @@ const experiences = [
             {
                 year: '2021',
                 title: 'SWE Intern',
-                description: 'Developed a short-term human reidentification computer vision algorithm on top of a camera-embedded deep-learning system.'
+                description: 'Developed a short-term human reidentification computer vision algorithm on top of a camera-embedded deep-learning system.',
+                frameworks: ['Python', 'OpenCV', 'NumPy', 'ROS', 'rospy', 'Blenderpy']
             },
         ]
     },
@@ -53,7 +57,8 @@ const experiences = [
             {
                 year: '2018',
                 title: 'R&D Intern',
-                description: 'Conducted research on free-viewpoint volumetric video, AR occlusion, motion capture techniques, and adjacent technical subjects.'
+                description: 'Conducted research on free-viewpoint volumetric video, AR occlusion, motion capture techniques, and adjacent technical subjects.',
+                frameworks: []
             },
         ]
     },
@@ -63,26 +68,22 @@ const experiences = [
 function Work({curTheme}) {
 
     function Role(role) {
-        const tabRef = useRef<any>();
-        const hiddenRef = useRef<any>();
-        function onClick() {
-            tabRef.current.style.borderBottom=tabRef.current.style.borderBottom == '' ? '1px dashed grey' : '' ;
-            hiddenRef.current.style.display=hiddenRef.current.style.display == 'block' ? 'none' : 'block';
-        }
         return (
-            <div>
-                <a ref={tabRef} className={'w-96 group cursor-pointer flex relative'} onClick={onClick}>
-                    <div className={'absolute left-[-30px] w-6 h-6 text-xl flex items-center bg-no-repeat bg-auto group-hover:bg-contain'}
-                        style={{backgroundImage: `url(assets/images/highlight.png)`}}>
-                    </div>
+            <div className='flex flex-col'>
+                <div className={'w-full flex border-b border-slate-400 border-dashed'}>
                     <div className='w-32'>
                         {role.year}
                     </div>
-                    <div className='w-70'>
-                        {role.title}
+                    {role.title}
+                </div>
+                <div className='w-full flex text-sm'>
+                    <div className='ml-32 w-full'>
+                        {role.description}
+                        <div className='flex pt-4 gap-x-2 flex-wrap'>
+                            {role.frameworks.map(function(x){return <div className='flex items-center rounded-full'>{x}</div>})}
+                        </div>
                     </div>
-                </a>
-                <div className={`hidden pl-8 text-sm ${curTheme.colors.text2}`} ref={hiddenRef}>{role.description}</div>
+                </div>
             </div>
             
         )
@@ -91,14 +92,13 @@ function Work({curTheme}) {
     function Experience(experience) {
         return (
             <div className='flex flex-col gap-6 w-fit h-fit'>
-                <a className={`${curTheme.colors.hover} w-fit`} href={experience.link} target='_blank'>
+                <a className={`relative w-fit hover:bottom-1`} href={experience.link} target='_blank'>
                     <img className= 'w-20' src={experience.stamp} draggable='false'></img>
                 </a>
                 {experience.roles.map(Role)}
             </div>
         )
     }
-
 
     return (
         <div className='w-full h-fit flex flex-col gap-12 text-lg bg-transparent'>

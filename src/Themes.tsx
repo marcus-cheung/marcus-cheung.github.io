@@ -24,7 +24,7 @@ export const themes: Theme[] = [
     name: 'Light',
     colors: {
       text: 'text-slate-900',
-      text2:  'text-slate-700',
+      text2:  'text-slate-800',
       hover: 'hover:shadow-[0_0px_10px_black]'
     },
     assets: {
@@ -43,8 +43,8 @@ export const themes: Theme[] = [
   {
     name: 'Dark',
     colors: {
-      text: 'text-slate-100',
-      text2:  'text-slate-300',
+      text: 'text-slate-50',
+      text2:  'text-slate-100',
       hover: 'hover:shadow-[0_0px_10px_white]'
     },
     assets: {

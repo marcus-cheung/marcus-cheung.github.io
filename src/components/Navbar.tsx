@@ -39,15 +39,15 @@ function Navbar({curTheme}) {
         </p>
 
         <div className={'flex gap-8 md:mt-16 mt-3 md:flex-col md:gap-4 mb-2'}>
-          <ButtonStyle route='#about' element={<strong>ABOUT</strong>}></ButtonStyle>
-          <ButtonStyle route='#work' element={<strong>WORK</strong>}></ButtonStyle>
-          <ButtonStyle route='#projects' element={<strong>PROJECTS</strong>}></ButtonStyle>
+          <ButtonStyle route='#about' element={<strong>About</strong>}></ButtonStyle>
+          <ButtonStyle route='#work' element={<strong>Work</strong>}></ButtonStyle>
+          <ButtonStyle route='#projects' element={<strong>Projects</strong>}></ButtonStyle>
           {/* <ButtonStyle route='#mole' element={<strong>MONTY?</strong>}></ButtonStyle> */}
         </div>
       </div>
       
         
-      <div className={'flex gap-4 justify-start md:pb-52'}>
+      <div className={'flex gap-4'}>
         <Social url='mailto: cheung.marcus@gmail.com' image={curTheme.assets.email}></Social>
         <Social url='https://www.linkedin.com/in/marcusjcheung/' image={curTheme.assets.linkedin}></Social>
         <Social url='https://github.com/marcus-cheung' image={curTheme.assets.github}></Social>

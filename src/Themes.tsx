@@ -4,6 +4,7 @@ export interface Theme {
     text: string;
     text2: string;
     hover: string;
+    bg: string;
   };
   assets: {
     bulb: string;
@@ -25,7 +26,9 @@ export const themes: Theme[] = [
     colors: {
       text: 'text-slate-900',
       text2:  'text-slate-800',
-      hover: 'hover:shadow-[0_0px_10px_black]'
+      hover: 'hover:shadow-[0_0px_10px_black]',
+      bg: 'bg-amber-50'
+
     },
     assets: {
       bulb: 'assets/light/icons/lightbulb.png',
@@ -45,7 +48,8 @@ export const themes: Theme[] = [
     colors: {
       text: 'text-slate-50',
       text2:  'text-slate-100',
-      hover: 'hover:shadow-[0_0px_10px_white]'
+      hover: 'hover:shadow-[0_0px_10px_white]',
+      bg: 'bg-slate-950'
     },
     assets: {
       bulb: 'assets/dark/icons/lightbulb.png',

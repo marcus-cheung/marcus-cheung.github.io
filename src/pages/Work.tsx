@@ -102,7 +102,7 @@ function Work({curTheme}) {
 
     return (
         <div className='w-full h-fit flex flex-col gap-12 text-lg bg-transparent'>
-            <p>Places I've worked at.<br/>Click to learn more! </p>
+            <p>Places I've worked at. Click to learn more! </p>
             {experiences.map(Experience)}
         </div>
       );

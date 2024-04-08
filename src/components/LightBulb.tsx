@@ -175,7 +175,7 @@ const LightBulb = ({setThemeIndex, curTheme, setCursorStyle}) =>{
     })
 
     return (
-        <div className='absolute right-0 top-0 md:sticky pt-6 flex h-fit flex-col justify-center items-center cursor-pointer'>
+        <div className='absolute right-0 top-0 md:fixed pt-6 flex h-fit flex-col justify-center items-center cursor-pointer'>
             <img ref={bulbRef} src={curTheme.assets.bulb} className='w-12 min-w-12 h-auto select-none' draggable='false'/>
             <div ref={scene}  style={{width: sceneWidth, height: sceneHeight}}></div>
         </div>

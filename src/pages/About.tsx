@@ -3,7 +3,7 @@ import React from 'react';
 
 function About({curTheme}) {
   return (
-    <div className='w-fit h-fit flex flex-col gap-4'>
+    <div className='w-full h-fit flex flex-col gap-4'>
         {/* <img className='w-80' src='assets/images/homepage.gif'></img> */}
         <p>
           Software Engineer @ Google

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.926035e5.css",
-    "main.js": "/static/js/main.a6fd46e0.js",
+    "main.css": "/static/css/main.7913082e.css",
+    "main.js": "/static/js/main.27a499c6.js",
     "static/media/CascadiaCode-Bold.ttf": "/static/media/CascadiaCode-Bold.a84155701c07a1680072.ttf",
     "static/media/CascadiaCode-Regular.ttf": "/static/media/CascadiaCode-Regular.dbe401bc61b0a4fe4f2d.ttf",
     "static/media/CascadiaCode-Italic.ttf": "/static/media/CascadiaCode-Italic.c7d914630dee3e4c3489.ttf",
@@ -13,11 +13,11 @@
     "static/media/CascadiaCode-Regular.woff2": "/static/media/CascadiaCode-Regular.66e0a5da8da15caf0749.woff2",
     "static/media/CascadiaCode-Italic.woff2": "/static/media/CascadiaCode-Italic.7f8253868db54680e58a.woff2",
     "index.html": "/index.html",
-    "main.926035e5.css.map": "/static/css/main.926035e5.css.map",
-    "main.a6fd46e0.js.map": "/static/js/main.a6fd46e0.js.map"
+    "main.7913082e.css.map": "/static/css/main.7913082e.css.map",
+    "main.27a499c6.js.map": "/static/js/main.27a499c6.js.map"
   },
   "entrypoints": [
-    "static/css/main.926035e5.css",
-    "static/js/main.a6fd46e0.js"
+    "static/css/main.7913082e.css",
+    "static/js/main.27a499c6.js"
   ]
 }

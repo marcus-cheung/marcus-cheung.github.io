@@ -1,48 +1,43 @@
 import React, { useRef } from 'react';
+import FadeIn from '../components/FadeIn';
 
 const experiences = [
-    {
-        stamp: 'assets/images/gstamp1.png',
-        link: 'https://about.google/',
+    {   
+        company: 'GOOGLE',
         roles: [
             {
+                link: 'https://privacysandbox.com/',
+                image: 'assets/images/gstamp1.png',
                 year: '2024',
-                title: 'SWE L3',
-                description:<div>
-                                <a className='text-blue-500' href='https://privacysandbox.com/' target='_blank'>Privacy Sandbox</a>
-                                <br/>
-                                Incoming.
-                            </div>,
-                frameworks: ['TypeScript', 'HTML', 'React', 'Node.js', 'Next.js', 'Tailwind CSS']
+                title: 'SWE L3  »  Privacy Sandbox',
+                description: 'Incoming.',
+                frameworks: []
                 
             },
             {
+                link: 'https://arvr.google.com/',
+                image: 'assets/images/gstamp1.png',
                 year: '2023',
-                title: 'SWE Intern',
-                description:<div>
-                                <a className='text-blue-500' href='https://arvr.google.com/' target='_blank'>AR Experiences</a>
-                                <br/>
-                                Optimized an ear landmark ML model for mobile devices, used in virtual try-on and to supplement facial landmarking research.
-                            </div>,
-                frameworks: ['Python', 'C++', 'OpenCV', 'CUDA', 'TensorFlow', 'PIL', 'Pandas', 'Matplotlib', 'Colab', 'MediaPipe', 'NumPy', 'abseil', 'blaze']
+                title: 'SWE Intern » AR Experiences',
+                description: 'Optimized an ear landmark ML model for mobile devices, used in virtual try-on and to supplement facial landmarking research.',
+                frameworks: ['Python', 'C++', 'OpenCV', 'CUDA', 'TensorFlow', 'MediaPipe', 'blaze']
             },
             {
+                link: 'https://pay.google.com/about/',
+                image: 'assets/images/gpay_stamp.gif',
                 year: '2022',
-                title: 'STEP Intern',
-                description:<div>
-                                <a className='text-blue-500' href='https://pay.google.com/about/' target='_blank'>GPay</a>
-                                <br/>
-                                Streamlined external API integration, resulting in the deprecation of magic value-based sandboxing and greater testing coverage.
-                            </div>,
+                title: 'STEP Intern » GPay',
+                description:'Streamlined external API integration, resulting in the deprecation of magic value-based sandboxing and greater testing coverage.',
                 frameworks: ['Java', 'Protocol Buffers', 'JSON']
             }
         ]
     },
     {
-        stamp: 'assets/images/hanson_stamp.png',
-        link: 'https://www.hansonrobotics.com/',
+        company: 'HANSON ROBOTICS',
         roles: [
             {
+                link: 'https://www.hansonrobotics.com/',
+                image: 'assets/images/hanson_stamp.png',
                 year: '2021',
                 title: 'SWE Intern',
                 description: 'Developed a short-term human reidentification computer vision algorithm on top of a camera-embedded deep-learning system.',
@@ -51,10 +46,11 @@ const experiences = [
         ]
     },
     {
-        stamp: 'assets/images/the2h_stamp.gif',
-        link: 'https://www.the2h.com/',
+        company: 'THE2H',
         roles: [
             {
+                link: 'https://www.the2h.com/',
+                image: 'assets/images/the2h_stamp.gif',
                 year: '2018',
                 title: 'R&D Intern',
                 description: 'Conducted research on free-viewpoint volumetric video, AR occlusion, motion capture techniques, and adjacent technical subjects.',
@@ -67,42 +63,51 @@ const experiences = [
 
 function Work({curTheme}) {
 
-    function Role(role) {
+    function framework(framework) {
         return (
-            <div className='flex flex-col'>
-                <div className={'w-full flex border-b border-slate-400 border-dashed'}>
-                    <div className='w-32'>
-                        {role.year}
-                    </div>
-                    {role.title}
-                </div>
-                <div className='w-full flex text-sm'>
-                    <div className='ml-32 w-full'>
-                        {role.description}
-                        <div className='flex pt-4 gap-x-2 flex-wrap'>
-                            {role.frameworks.map(function(x){return <div className='flex items-center rounded-full'>{x}</div>})}
-                        </div>
-                    </div>
-                </div>
+            <div className='px-1 py-1 rounded border text-xs'>
+                {framework}
             </div>
-            
         )
     }
+
+    function Role(role) {
+        return (
+            <FadeIn bgStyle='bg-orange-500 rounded-xl'>
+                <a className={`group w-full h-fit`} href={role.link} target='_blank'>
+                    <div className={`w-full flex hover:duration-300 hover:-translate-y-1 hover:-translate-x-1 px-2 py-4 ${curTheme.colors.bg} border border-orange-500 py-2 rounded-xl`}>
+                        <div className='w-24 min-w-24 group-hover:text-orange-500 group-hover:duration-300'>
+                            <strong>{role.year}</strong>   
+                        </div>
+                        <div className='w-full flex flex-col'>
+                            <strong className='group-hover:text-orange-500 group-hover:duration-300'>{role.title}</strong>   
+                            <p>{role.description}</p>
+                            <div className='flex gap-2 flex-wrap'>
+                                {role.frameworks.map(framework)}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </FadeIn>
+        )
+    }
+
+    
     
     function Experience(experience) {
         return (
-            <div className='flex flex-col gap-6 w-fit h-fit'>
-                <a className={`relative w-fit hover:bottom-1`} href={experience.link} target='_blank'>
-                    <img className= 'w-20' src={experience.stamp} draggable='false'></img>
-                </a>
-                {experience.roles.map(Role)}
+            <div className='flex flex-col w-fit h-fit rounded-xl'>
+                <strong className='flex text-lg mb-2 w-fit'>{experience.company}</strong>
+                <div className='flex flex-col gap-3'>
+                    {experience.roles.map(Role)}
+                </div>
             </div>
         )
     }
 
     return (
-        <div className='w-full h-fit flex flex-col gap-12 text-lg bg-transparent'>
-            <p>Places I've worked at. Click to learn more! </p>
+        <div className='w-full h-fit flex flex-col gap-6 bg-transparent'>
+            <strong className='flex justify-center text-5xl'>WORK</strong>
             {experiences.map(Experience)}
         </div>
       );

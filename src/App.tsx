@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-// import { HashRouter, Routes, Route } from 'react-router-dom';
 import {Element} from 'react-scroll';
 import {themes} from './Themes'
 import {getCurrentTheme} from './Helpers';
@@ -9,51 +8,62 @@ import About from './pages/About'
 import Work from './pages/Work'
 import Projects from './pages/Projects'
 import LightBulb from './components/LightBulb';
-import Mole from './components/Mole'
-
-const divider = <img className='select-none' src='assets/dividers/pixels.gif' draggable='false'></img>
-const margin = <div className='h-10 md:left-[-12px] justify-center items-center flex my-8 w-full'>
-  <hr className="h-px my-8 bg-gray-200"></hr>
-</div>
+import FadeIn from './components/FadeIn';
 
 
 const App: React.FC = () => {
   const [themeIndex, setThemeIndex] = useState(getCurrentTheme());
   const [cursorStyle, setCursorStyle] = useState('cursor-auto');
   const curTheme = themes[themeIndex];
-
+  const divider = <hr className={`h-1 rounded-full bg-orange-500 w-7/12 border-0`}></hr>
+  const margin = <div className='flex w-full justify-center'>
+                    {divider}
+                  </div>
+  const space = <div className='pt-20'></div>
   return (<div className={`flex flex-col md:items-center ${curTheme.colors.bg} ${cursorStyle} ${cursorStyle} ${curTheme.colors.text2}`}>
-            <main className='font-mono px-10 max-w-full min-h-screen flex justify-center min-w-fit'>
+            <main className='font-incon px-10 max-w-full min-h-screen flex justify-center min-w-fit'>
               <div className='md:flex relative justify-around'>
                 <Navbar curTheme={curTheme}></Navbar>
-                <div className='h-fit text-lg md:min-w-[460px] md:w-full md:max-w-[600px]'>
-                  <Element id='about'>
-                    <div className='h-10 md:h-24 md:left-[-12px] justify-center items-center flex my-8 md:my-0 w-full md:collapse'>
-                      {divider}
-                    </div>
-                    <About curTheme={curTheme}/>
-                  </Element>
+                <div className='bg-repeat bg-[length:200px_200px] rounded-xl p-10 m-[-20px] relative h-fit md:min-w-[460px] md:w-full md:max-w-[600px]' style={{backgroundImage: 'url(assets/images/pap2er.jpeg)'}}>
+                  <FadeIn>
+                    <Element id='about'>
+                          <About curTheme={curTheme}/>
+                          {space}
+                    </Element>
+                  </FadeIn>
                   
-                  <Element id='work'>
-                    {margin}
-                    <Work curTheme={curTheme}/>
-                  </Element>
+                  {margin}
+                    <Element id='work'>
+                      {space}
+                      <Work curTheme={curTheme}/>
+                      {space}
+                    </Element>
+
+                  {margin}
+                  
                   <Element id='projects'>
-                    {margin}
+                    {space}   
                     <Projects curTheme={curTheme}></Projects>
+                    {space}
                   </Element>
-                  <div></div>
-                  <a href='https://open.spotify.com/user/uokzhv84ckxmlhel7u9b4xga3?si=2f415cd8f55f4b6b' target="_blank">
-                    <img className='absolute bottom-0 right-16 w-24 shadow-[0_0px_15px_orange] rounded-full' src='assets/images/disk.gif'></img>
-                  </a>
+
+                  
+                  {/* Floaters */}
+                  {/* <a href='https://open.spotify.com/user/uokzhv84ckxmlhel7u9b4xga3?si=2f415cd8f55f4b6b' target="_blank">
+                    <img className='absolute bottom-[-100px] right-[-24px] w-24 shadow-[0_0px_15px_orange] rounded-full' src='assets/images/disk.gif'></img>
+                  </a> */}
+                  {/* <img src='assets/images/police-bear.gif' className='absolute bottom-[900px] right-[90px]'></img> */}
+                  <div className='h-72'></div>
+                  
                 </div>
-
               </div>
-              <LightBulb setThemeIndex={setThemeIndex} curTheme={curTheme} setCursorStyle={setCursorStyle}></LightBulb>
+              <div className='flex fixed md:fixed pt-6 gap-4 right-0 ${curTheme.colors.bg}'>
+                <img className='w-10 h-10 mt-2' src='assets/images/cart.png'></img>
+                <LightBulb setThemeIndex={setThemeIndex} curTheme={curTheme} setCursorStyle={setCursorStyle}></LightBulb>
+              </div>
             </main>
-            <footer className='w-full h-32 bg flex justify-center items-center text-xs'>@Marcus cheung</footer>
+            <footer className={`w-full mt-32 h-32 flex justify-center items-center text-xs`}>Poilom and Fogum</footer>
             {/* <Mole themeIndex={themeIndex}></Mole> */}
-
           </div>
     );
 };

@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
-  content: ["./src/**/*.{html,tsx,ts}"],
+  content: ['./src/**/*.{html,tsx,ts}'],
   theme: {
     extend: {
       colors: {
@@ -14,8 +15,14 @@ module.exports = {
         }
       },
       fontFamily: {
-        Cascadia: ['CascadiaCode', "sans-serif"]
-      }
+        poppins: ['Poppins', 'sans-serif'],
+        mont: ['Montserrat', 'sans-serif'],
+        incon: ['Inconsolata', 'sans-serif']
+      },
+      cursor: {
+        android: "url('../public/assets/images/android_cursor.png'), pointer",
+        // okja: 'url(/assets/images/face.png), pointer',
+      },
     },
   },
   plugins: [],

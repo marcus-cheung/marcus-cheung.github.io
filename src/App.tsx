@@ -25,12 +25,10 @@ const App: React.FC = () => {
               <div className='md:flex relative justify-around'>
                 <Navbar curTheme={curTheme}></Navbar>
                 <div className='bg-repeat bg-[length:200px_200px] rounded-xl p-10 m-[-20px] relative h-fit md:min-w-[460px] md:w-full md:max-w-[600px]' style={{backgroundImage: 'url(assets/images/pap2er.jpeg)'}}>
-                  <FadeIn>
                     <Element id='about'>
                           <About curTheme={curTheme}/>
                           {space}
                     </Element>
-                  </FadeIn>
                   
                   {margin}
                     <Element id='work'>

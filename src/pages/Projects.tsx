@@ -73,7 +73,9 @@ function Projects({curTheme}) {
 
     return (
         <div className='w-full h-fit flex flex-col gap-4'>
-            <strong className='flex justify-center text-5xl mb-8'>PROJECTS</strong>
+            <FadeIn>
+                <strong className='flex justify-center text-5xl mb-8'>PROJECTS</strong>
+            </FadeIn>
             {projects.map(Project)}
         </div>
       );

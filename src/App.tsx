@@ -15,10 +15,11 @@ const App: React.FC = () => {
   const [themeIndex, setThemeIndex] = useState(getCurrentTheme());
   const [cursorStyle, setCursorStyle] = useState('cursor-auto');
   const curTheme = themes[themeIndex];
-  const divider = <hr className={`h-1 rounded-full bg-orange-500 w-7/12 border-0`}></hr>
-  const margin = <div className='flex w-full justify-center'>
-                    {divider}
-                  </div>
+  const margin = <FadeIn>
+                    <div className='flex w-full justify-center'>
+                      <hr className={`h-1 rounded-full bg-orange-500 w-7/12 border-0`}></hr>
+                    </div>
+                  </FadeIn>
   const space = <div className='pt-20'></div>
   return (<div className={`flex flex-col md:items-center ${curTheme.colors.bg} ${cursorStyle} ${cursorStyle} ${curTheme.colors.text2}`}>
             <main className='font-incon px-10 max-w-full min-h-screen flex justify-center min-w-fit'>

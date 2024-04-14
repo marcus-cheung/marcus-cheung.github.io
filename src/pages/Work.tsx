@@ -97,7 +97,7 @@ function Work({curTheme}) {
     function Experience(experience) {
         return (
             <div className='flex flex-col w-fit h-fit rounded-xl'>
-                <strong className='flex text-lg mb-2 w-fit'>{experience.company}</strong>
+                <FadeIn><b className='flex text-lg mb-2 w-fit'>{experience.company}</b></FadeIn>
                 <div className='flex flex-col gap-3'>
                     {experience.roles.map(Role)}
                 </div>
@@ -107,7 +107,7 @@ function Work({curTheme}) {
 
     return (
         <div className='w-full h-fit flex flex-col gap-6 bg-transparent'>
-            <strong className='flex justify-center text-5xl'>WORK</strong>
+            <FadeIn><b className='flex justify-center text-5xl'>WORK</b></FadeIn>
             {experiences.map(Experience)}
         </div>
       );

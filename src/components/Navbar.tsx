@@ -13,7 +13,7 @@ function Social({url, image}) {
 
 
 //ff8c00
-function Navbar({curTheme}) {
+function Navbar({curTheme, activateMonty}) {
   function ButtonStyle({route, element}) {
     return (<ScrollLink
             activeClass="active"
@@ -33,6 +33,18 @@ function Navbar({curTheme}) {
               
             </ScrollLink>)
   }
+
+  const montyButton =
+  <div onClick={activateMonty} className='relative cursor-pointer w-fit group flex text-xl'> 
+    <div className={'absolute left-[-24px] w-6 h-6 flex items-center bg-no-repeat md:group-hover:bg-contain'}
+      style={{backgroundImage: `url(assets/images/highlight.png)`}}>
+    </div>
+    <div className='w-fit bg-no-repeat hover:bg-contain md:hover:bg-auto hover:bg-center md:hover:bg-right'
+      style={{backgroundImage: `url(assets/images/highlight.png)`}}>
+      Monty?
+    </div>
+  </div>
+
   return (
     <nav className={`h-0 md:h-auto collapse md:visible md:mt-0 w-11/12 z-10 md:sticky top-0 ${curTheme.colors.text} md:mr-6 md:w-3/12 max-h-screen md:flex md:flex-col md:justify-between pt-12 md:pt-20 md:pb-52`}>
       <div>
@@ -42,12 +54,7 @@ function Navbar({curTheme}) {
           <ButtonStyle route='#about' element={<div>About</div>}></ButtonStyle>
           <ButtonStyle route='#work' element={<div>Work</div>}></ButtonStyle>
           <ButtonStyle route='#projects' element={<div>Projects</div>}></ButtonStyle>
-          {/* <div className='relative cursor-pointer w-fit group flex text-xl'> 
-            <div className={'absolute left-[-24px] w-6 h-6 flex items-center bg-no-repeat md:group-hover:bg-contain'}
-              style={{backgroundImage: `url(assets/images/highlight.png)`}}>
-            </div>
-          </div> */}
-          {/* <ButtonStyle route='#mole' element={<strong>MONTY?</strong>}></ButtonStyle> */}
+          {montyButton}
         </div>
       </div>
       

@@ -10,11 +10,11 @@ function About({curTheme}) {
           <p className='text-3xl'>Hi!</p><br/>
 
           I'm currently a software engineer at&nbsp;
-          <b className="whitespace-nowrap text-orange-500 cursor-[url('../public/assets/images/android_cursor.png'),_auto]">
+          <b className="whitespace-nowrap text-orange-500 cursor-[url('../public/assets/images/android_cursor.png')_18_18,_auto]">
           Google
           </b>
           &nbsp;working on <span className='whitespace-nowrap'>The Privacy Sandbox.</span> I recently graduated from&nbsp;
-          <b className="whitespace-nowrap text-orange-500 cursor-[url('../public/assets/images/oski.png'),_auto]">
+          <b className="whitespace-nowrap text-orange-500 cursor-[url('../public/assets/images/oski.png')_16_16,_auto]">
           UC Berkeley
           </b>
           &nbsp;with a bachelors in Computer Science.

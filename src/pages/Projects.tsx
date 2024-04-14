@@ -52,10 +52,10 @@ function Projects({curTheme}) {
 
     function Project(project) {
         return (
-            <FadeIn bgStyle='bg-orange-500 rounded-xl'>
-                <a className={`group w-full h-fit group`} href={project.link} target='_blank'>
+            <FadeIn bgStyle='bg-orange-500 rounded-xl group'>
+                <a className={`group w-full h-fit`} href={project.link} target='_blank'>
                     <div className={`w-full flex hover:duration-300 hover:-translate-y-1 hover:-translate-x-1 px-2 py-4 ${curTheme.colors.bg} border border-orange-500 py-2 rounded-xl`}>
-                        <div className='w-24 flex pr-16 pt-6'>
+                        <div className='w-24 flex justify-center pr-4 items-center'>
                             <img className= 'h-16 max-w-16 relative' src={project.stamp} draggable='false'></img>
                         </div>
                         <div className='flex flex-col w-fit max-w-[472px] h-fit'>

@@ -1,7 +1,8 @@
 
 import React, { useEffect, useState, useRef, memo } from 'react';
 import {gsap} from 'gsap';
-import {Coordinate, getCenter, getRelativeToCenter, distance, inBounds} from '../Helpers'
+import {Coordinate, getCenter, getRelativeToCenter, distance, inBounds, getCurrentTheme} from '../Helpers'
+
 
 function getBoundingPageRect(element: any) {
     const rect = element.getBoundingClientRect();
@@ -20,7 +21,7 @@ function getBoundingPageRect(element: any) {
             }
 }
 
-const Mole = ({themeIndex}) => {
+function Mole() {
     const spriteDim = {W: 48, H: 48};
     const characterRef = useRef<any>(null);
     const standFrame = 2 * spriteDim.W;
@@ -86,7 +87,7 @@ const Mole = ({themeIndex}) => {
     useEffect(() => {
         const character = characterRef.current;
         // set correct theme
-        gsap.to(character, {backgroundPositionY: `${-themeIndex * spriteDim.H}px`, duration: 0});
+        gsap.to(character, {backgroundPositionY: `${-getCurrentTheme() * spriteDim.H}px`, duration: 0});
         
         function getStartEnd(eventCoords, characterRect) {
             const start = getCenter(characterRect);
@@ -143,7 +144,7 @@ const Mole = ({themeIndex}) => {
             if (!origin) {
                 const characterRect = getBoundingPageRect(character);
                 setOrigin({X: characterRect.left, Y: characterRect.top}); // init origin
-                // gsap.to(character, {x: 220, y: 80, duration: 0, onComplete: function(){character.style.visibility = 'visible';}});
+                gsap.to(character, {x: 100, y: 180, duration: 0, onComplete: function(){character.style.visibility = 'visible';}});
                 character.style.visibility = 'visible';
             }
         }
@@ -165,7 +166,7 @@ const Mole = ({themeIndex}) => {
     
     
     return (
-        <div ref={characterRef} className='absolute top-0 left-0 invisible cursor-pointer' style={{backgroundImage: 'url(assets/images/sprites/mole_sheet_3x.png)', width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}></div>
+        <div ref={characterRef} className="absolute top-0 left-0 cursor-pointer" style={{backgroundImage: 'url(assets/images/sprites/mole_sheet_3x.png)', width: `${spriteDim.W}px`, height: `${spriteDim.H}px`}}></div>
     );
 };
 

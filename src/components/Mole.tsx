@@ -58,7 +58,7 @@ function Mole() {
         
         // Sprite loop
         const spriteLoop = gsap.timeline({repeat: -1, delay: 0.1})
-                            .to(character, {backgroundPositionX: `${spriteDim.W * (numWalkFrames - 1)}px`, ease: `steps(${numWalkFrames - 1})`, duration: 0.2 * 200 / speed});
+                            .to(character, {backgroundPositionX: `${spriteDim.W * (numWalkFrames - 1)}px`, ease: `steps(${numWalkFrames - 1})`, duration: 0.15 * 200 / speed});
         spriteLoop.play();
 
 
@@ -89,15 +89,15 @@ function Mole() {
         // set correct theme
         gsap.to(character, {backgroundPositionY: `${-getCurrentTheme() * spriteDim.H}px`, duration: 0});
         
-        function getStartEnd(eventCoords, characterRect) {
+        function getStartEnd(eventCoords, characterRect, org=origin) {
             const start = getCenter(characterRect);
             const boundedCoords = {X: Math.max(spriteDim.W / 2 + leftBounds, Math.min(window.innerWidth + window.scrollX - spriteDim.W / 2 - rightBounds, eventCoords.X)),
                                             Y: Math.max(spriteDim.H / 2 + topBounds, Math.min(window.innerHeight + window.scrollY - spriteDim.H / 2, eventCoords.Y))};
             const end = getRelativeToCenter(characterRect, boundedCoords);
-            start.X -= spriteDim.W / 2 + origin!.X;
-            start.Y -= spriteDim.H / 2 + origin!.Y; // adjust to true mole center
-            end.X -= origin!.X;
-            end.Y -= origin!.Y;
+            start.X -= spriteDim.W / 2 + org!.X;
+            start.Y -= spriteDim.H / 2 + org!.Y; // adjust to true mole center
+            end.X -= org!.X;
+            end.Y -= org!.Y;
             return [start, end];
         }
 
@@ -143,9 +143,16 @@ function Mole() {
         function init() {
             if (!origin) {
                 const characterRect = getBoundingPageRect(character);
-                setOrigin({X: characterRect.left, Y: characterRect.top}); // init origin
-                gsap.to(character, {x: 100, y: 180, duration: 0, onComplete: function(){character.style.visibility = 'visible';}});
-                character.style.visibility = 'visible';
+                const org = {X: characterRect.left, Y: characterRect.top};
+                setOrigin(org); // init origin
+                setLocked(true);
+                setWalking(true);
+                const eventCoords1 = {X: 0, Y: 500};
+                const [start1, end1] = getStartEnd(eventCoords1, characterRect, org);
+                gsap.to(character, {x: -spriteDim.W, y: end1.Y, duration: 0});
+                const eventCoords = {X: 150, Y: 500};
+                const [start, end] = getStartEnd(eventCoords, characterRect, org);
+                walk(character, start, end);
             }
         }
         init()

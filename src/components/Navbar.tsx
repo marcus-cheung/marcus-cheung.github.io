@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useRef} from 'react';
 import { Link as ScrollLink, Element, animateScroll as scroll } from 'react-scroll';
 import Mole from './Mole'
 
@@ -34,8 +34,10 @@ function Navbar({curTheme, activateMonty}) {
             </ScrollLink>)
   }
 
+  const montyRef = useRef<any>(null);
+
   const montyButton =
-  <div onClick={activateMonty} className='relative cursor-pointer w-fit group flex text-xl'> 
+  <div ref={montyRef} onClick={() => {window.location.href = '#'; activateMonty(); montyRef.current.style.visibility = 'hidden';}} className='relative cursor-pointer w-fit group flex text-xl'> 
     <div className={'absolute left-[-24px] w-6 h-6 flex items-center bg-no-repeat md:group-hover:bg-contain'}
       style={{backgroundImage: `url(assets/images/highlight.png)`}}>
     </div>
@@ -51,7 +53,7 @@ function Navbar({curTheme, activateMonty}) {
         <strong className='text-5xl'>MARCUS CHEUNG</strong>
 
         <div className={'flex gap-8 md:mt-16 mt-3 md:flex-col md:gap-4 mb-2'}>
-          <ButtonStyle route='#about' element={<div>About</div>}></ButtonStyle>
+          <ButtonStyle route='#' element={<div>About</div>}></ButtonStyle>
           <ButtonStyle route='#work' element={<div>Work</div>}></ButtonStyle>
           <ButtonStyle route='#projects' element={<div>Projects</div>}></ButtonStyle>
           {montyButton}

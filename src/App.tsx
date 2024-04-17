@@ -31,7 +31,7 @@ const App: React.FC = () => {
     modalRef.current.style.visibility = 'hidden';
   }
 
-  const about = <Element id='about'>
+  const about = <Element id=''>
                   <FadeIn>
                   <About curTheme={curTheme}/>
                   {space}

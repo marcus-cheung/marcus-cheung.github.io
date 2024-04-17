@@ -54,8 +54,8 @@ function Projects({curTheme}) {
         return (
             <FadeIn bgStyle='bg-orange-500 rounded-xl group'>
                 <a className={`group w-full h-fit`} href={project.link} target='_blank'>
-                    <div className={`w-full flex hover:duration-300 hover:-translate-y-1 hover:-translate-x-1 px-2 py-4 ${curTheme.colors.bg} border border-orange-500 py-2 rounded-xl`}>
-                        <div className='w-24 flex justify-center pr-4 items-center'>
+                    <div className={`w-full flex hover:duration-300 hover:-translate-y-1.5 hover:-translate-x-1.5 px-2 py-4 ${curTheme.colors.bg} border border-orange-500 py-2 rounded-xl`}>
+                        <div className='w-24 min-w-24 flex justify-center pr-4 items-center'>
                             <img className= 'h-16 max-w-16 relative' src={project.stamp} draggable='false'></img>
                         </div>
                         <div className='flex flex-col w-fit max-w-[472px] h-fit'>
@@ -72,9 +72,9 @@ function Projects({curTheme}) {
     }
 
     return (
-        <div className='w-full h-fit flex flex-col gap-4'>
+        <div className='w-full h-fit flex flex-col gap-6'>
             <FadeIn>
-                <strong className='flex justify-center text-5xl mb-8'>PROJECTS</strong>
+                <strong className='flex justify-center text-5xl mb-6'>PROJECTS</strong>
             </FadeIn>
             {projects.map(Project)}
         </div>

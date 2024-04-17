@@ -75,7 +75,7 @@ function Work({curTheme}) {
         return (
             <FadeIn bgStyle='bg-orange-500 rounded-xl group'>
                 <a className={`w-full h-fit`} href={role.link} target='_blank'>
-                    <div className={`w-full flex hover:duration-300 hover:-translate-y-1 hover:-translate-x-1 px-2 py-4 ${curTheme.colors.bg} border border-orange-500 py-2 rounded-xl`}>
+                    <div className={`w-full flex hover:duration-300 hover:-translate-y-1.5 hover:-translate-x-1.5 px-2 py-4 ${curTheme.colors.bg} border border-orange-500 py-2 rounded-xl`}>
                         <div className='w-24 min-w-24 group-hover:text-orange-500 group-hover:duration-300'>
                             <strong>{role.year}</strong>   
                         </div>

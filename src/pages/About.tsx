@@ -10,11 +10,11 @@ function About({curTheme}) {
           <p className='text-3xl'>Hi!</p><br/>
 
           I'm currently a software engineer at&nbsp;
-          <b className="whitespace-nowrap text-orange-500 cursor-[url('../public/assets/images/android_cursor.png')_18_18,_auto]">
+          <b className={`whitespace-nowrap ${curTheme.colors.textHighlight} cursor-[url('../public/assets/images/android_cursor.png')_18_18,_auto]`}>
           Google
           </b>
           &nbsp;working on <span className='whitespace-nowrap'>The Privacy Sandbox.</span> I recently graduated from&nbsp;
-          <b className="whitespace-nowrap text-orange-500 cursor-[url('../public/assets/images/oski.png')_16_16,_auto]">
+          <b className={`whitespace-nowrap ${curTheme.colors.textHighlight} cursor-[url('../public/assets/images/oski.png')_16_16,_auto]`}>
           UC Berkeley
           </b>
           &nbsp;with a bachelors in Computer Science.
@@ -25,7 +25,7 @@ function About({curTheme}) {
         </p>
       </div>
       
-      {/* <a className='text-orange-500' href='assets/images/okja.png' target='_blank'>Resume</a> */}
+      {/* <a className='curTheme.colors.textHighlight' href='assets/images/okja.png' target='_blank'>Resume</a> */}
     </div>
     );
 };

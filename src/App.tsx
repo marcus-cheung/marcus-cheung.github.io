@@ -13,12 +13,7 @@ import FadeIn from './components/FadeIn';
 import SecretCode from './components/SecretCode';
 import Mole from './components/Mole';
 
-const margin = <FadeIn>
-                    <div className='flex w-full justify-center'>
-                      <hr className={`h-1 rounded-full bg-orange-500 w-7/12 border-0`}></hr>
-                    </div>
-                  </FadeIn>
-const space = <div className='pt-20'></div>
+
 
 const App: React.FC = () => {
   const [themeIndex, setThemeIndex] = useState(getCurrentTheme());
@@ -30,6 +25,15 @@ const App: React.FC = () => {
   function closeModal() {
     modalRef.current.style.visibility = 'hidden';
   }
+
+  const margin = <FadeIn>
+                    <div className='flex w-full justify-center'>
+                      <hr className={`h-1 rounded-full ${curTheme.colors.highlight} w-7/12 border-0`}></hr>
+                    </div>
+                  </FadeIn>
+
+  const space = <div className='pt-20'></div>
+
 
   const about = <Element id=''>
                   <FadeIn>
@@ -50,7 +54,7 @@ const App: React.FC = () => {
                     {space}
                   </Element>
 
-  return (<div className={`font-incon flex flex-col md:items-center ${curTheme.colors.bg} ${cursorStyle} ${curTheme.colors.text2}`}>            
+  return (<div className={`font-incon flex flex-col md:items-center ${curTheme.colors.bg} ${cursorStyle} ${curTheme.colors.text}`}>            
             {/* Modal */}
             <div ref={modalRef} className='w-full z-20 h-full bg-black fixed bg-opacity-40 flex justify-center items-center' style={{visibility: 'hidden'}}>
               <SecretCode closeModal={closeModal}></SecretCode>
@@ -61,7 +65,7 @@ const App: React.FC = () => {
               <div className='md:flex relative justify-around'>
                 <Navbar curTheme={curTheme} activateMonty={()=>setMonty(true)}></Navbar>
                 {/* Main Body */}
-                <div className='rounded-xl p-10 m-[-20px] relative h-fit md:min-w-[460px] md:w-full md:max-w-[600px]'>
+                <div className='p-10 m-[-20px] relative h-fit md:min-w-[460px] md:w-full md:max-w-[600px]'>
                   {about}
                   
                   {margin}
@@ -80,7 +84,7 @@ const App: React.FC = () => {
               </div>
             </main>
 
-            <footer className={`w-full mt-32 h-32 flex justify-center items-center text-xs`}>Poilom and Fogum</footer>
+            <footer className={`w-full mt-32 h-32 bg-[#70c3fe] flex justify-center items-center text-xs`}>Poilom and Fogum</footer>
             
           </div>
     );

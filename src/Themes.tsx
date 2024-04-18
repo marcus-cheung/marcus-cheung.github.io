@@ -2,10 +2,11 @@ export interface Theme {
   name: string;
   colors: {
     text: string;
-    text2: string;
+    textHighlight: string;
     hover: string;
     bg: string;
-    main: string;
+    highlight: string;
+    border: string;
   };
   assets: {
     bulb: string;
@@ -26,10 +27,11 @@ export const themes: Theme[] = [
     name: 'Light',
     colors: {
       text: 'text-slate-900',
-      text2:  'text-slate-800',
+      textHighlight:  'text-orange-500',
       hover: 'hover:bg-slate-800/5',
-      bg: 'bg-stone-50',
-      main: 'bg-orange-500'
+      bg: 'bg-[#f5eee9]',
+      highlight: 'bg-orange-500',
+      border: 'border-orange-500'
     },
     assets: {
       bulb: 'assets/light/icons/lightbulb.png',
@@ -48,10 +50,11 @@ export const themes: Theme[] = [
     name: 'Dark',
     colors: {
       text: 'text-slate-50',
-      text2:  'text-slate-100',
+      textHighlight:  'text-orange-500',
       hover: 'hover:bg-white/5',
-      bg: 'bg-stone-900',
-      main: 'bg-cyan-800'
+      bg: 'bg-stone-950',
+      highlight: 'bg-orange-500',
+      border: 'border-orange-500'
     },
     assets: {
       bulb: 'assets/dark/icons/lightbulb.png',

@@ -73,16 +73,16 @@ function Work({curTheme}) {
 
     function Role(role) {
         return (
-            <FadeIn bgStyle='bg-orange-500 rounded-xl group'>
+            <FadeIn bgStyle={`${curTheme.colors.highlight} rounded group`}>
                 <a className={`w-full h-fit`} href={role.link} target='_blank'>
-                    <div className={`w-full flex hover:duration-300 hover:-translate-y-1.5 hover:-translate-x-1.5 px-2 py-4 ${curTheme.colors.bg} border border-orange-500 py-2 rounded-xl`}>
-                        <div className='w-24 min-w-24 group-hover:text-orange-500 group-hover:duration-300'>
+                    <div className={`w-full flex duration-100 hover:-translate-y-2 hover:-translate-x-2 px-2 py-4 ${curTheme.colors.bg} border-2 ${curTheme.colors.border} py-2 rounded`}>
+                        <div className='w-24 min-w-24 group-hover:text-orange-500'>
                             <strong>{role.year}</strong>   
                         </div>
                         <div className='w-full flex flex-col'>
-                            <strong className='group-hover:text-orange-500 group-hover:duration-300'>{role.title}</strong>   
+                            <strong className='group-hover:text-orange-500'>{role.title}</strong>   
                             <p>{role.description}</p>
-                            <div className='flex gap-2 flex-wrap'>
+                            <div className='flex gap-4 flex-wrap'>
                                 {role.frameworks.map(framework)}
                             </div>
                         </div>
@@ -96,9 +96,9 @@ function Work({curTheme}) {
     
     function Experience(experience) {
         return (
-            <div className='flex flex-col w-fit h-fit rounded-xl'>
+            <div className='flex flex-col w-fit h-fit rounded'>
                 <FadeIn><b className='flex text-lg mb-2 w-fit'>{experience.company}</b></FadeIn>
-                <div className='flex flex-col gap-3'>
+                <div className='flex flex-col gap-4'>
                     {experience.roles.map(Role)}
                 </div>
             </div>
@@ -106,7 +106,7 @@ function Work({curTheme}) {
     }
 
     return (
-        <div className='w-full h-fit flex flex-col gap-6 bg-transparent'>
+        <div className='w-full h-fit flex flex-col gap-6'>
             <FadeIn><b className='flex justify-center text-5xl'>WORK</b></FadeIn>
             {experiences.map(Experience)}
         </div>

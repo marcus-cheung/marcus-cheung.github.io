@@ -84,7 +84,7 @@ const App: React.FC = () => {
               </div>
             </main>
 
-            <footer className={`w-full mt-32 h-32 bg-[#70c3fe] flex justify-center items-center text-xs`}>Poilom and Fogum</footer>
+            <footer className={`w-full mt-32 h-32 flex justify-center items-center text-xs`}>Poilom and Fogum</footer>
             
           </div>
     );

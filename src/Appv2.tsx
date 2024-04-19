@@ -53,20 +53,35 @@ const App: React.FC = () => {
                     <Projects curTheme={curTheme}></Projects>
                     {space}
                   </Element>
+  function Page({children, bg=''}) {
+    return (
+    <div className={bg+' border'}>
+      <div className='p-10 m-[-20px] relative h-fit md:min-w-[460px] md:w-full md:max-w-[600px]'>
+        {children}
+      </div>
+    </div>)
+  }
 
-  return (<div className={`font-incon flex h-fit flex-col md:items-center ${curTheme.colors.bg} ${cursorStyle} ${curTheme.colors.text}`}>            
+  return (<div className={`font-incon flex flex-col md:items-center ${curTheme.colors.bg} ${cursorStyle} ${curTheme.colors.text}`}>            
             {/* Modal */}
             <div ref={modalRef} className='w-full z-20 h-full bg-black fixed bg-opacity-40 flex justify-center items-center' style={{visibility: 'hidden'}}>
               <SecretCode closeModal={closeModal}></SecretCode>
             </div>
-            
 
-            <main className='px-10 max-w-full h-fit min-h-screen flex justify-center min-w-fit'>
+            <main className='max-w-full w-screen min-h-screen flex justify-center min-w-fit'>
               {monty ? <Mole></Mole> : ''}
-              <div className='md:flex relative justify-around'>
+              <div className='md:flex relative w-full'>
                 <Navbar curTheme={curTheme} activateMonty={()=>setMonty(true)}></Navbar>
                 {/* Main Body */}
-                <div className='p-10 m-[-20px] relative h-fit md:min-w-[460px] md:w-full md:max-w-[600px]'>
+                <div className='flex-col w-full'>
+                  <Page bg={'bg-blue-300'}>{about}</Page>
+                  {margin}
+                  <Page bg={'bg-yellow-300'}>{work}</Page>
+                  {margin}
+                  <Page bg={'bg-red-300'}>{projects}</Page>
+                </div>
+                
+                {/* <div className='p-10 m-[-20px] relative h-fit md:min-w-[460px] md:w-full md:max-w-[600px]'>
                   {about}
                   
                   {margin}
@@ -76,8 +91,7 @@ const App: React.FC = () => {
                   {margin}
                   
                   {projects}
-                  
-                </div>
+                </div> */}
               </div>
               {/* Top Bar */}
               <div className='flex fixed md:fixed pt-6 gap-4 z-50 right-0 ${curTheme.colors.bg}'>
@@ -85,8 +99,8 @@ const App: React.FC = () => {
                 <LightBulb setThemeIndex={setThemeIndex} curTheme={curTheme} setCursorStyle={setCursorStyle}></LightBulb>
               </div>
             </main>
-            <footer className={`w-full mt-32 h-32 flex justify-center items-center text-xs`}>Poilom and Fogum</footer>
-            {/* Floaters */}
+
+            <footer className={`w-full mt-32 h-32 bg-[#70c3fe] flex justify-center items-center text-xs`}>Poilom and Fogum</footer>
             
           </div>
     );

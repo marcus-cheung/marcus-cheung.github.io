@@ -106,7 +106,7 @@ function Work({curTheme}) {
     }
 
     return (
-        <div className='w-full h-fit flex flex-col gap-6'>
+        <div className='w-full h-fit flex flex-col gap-8 text-lg'>
             <FadeIn><b className='flex justify-center text-5xl'>WORK</b></FadeIn>
             {experiences.map(Experience)}
         </div>

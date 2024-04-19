@@ -72,7 +72,7 @@ function Projects({curTheme}) {
     }
 
     return (
-        <div className='w-full h-fit flex flex-col gap-6'>
+        <div className='w-full h-fit flex flex-col gap-6 text-lg'>
             <FadeIn>
                 <strong className='flex justify-center text-5xl mb-6'>PROJECTS</strong>
             </FadeIn>

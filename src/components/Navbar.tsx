@@ -48,7 +48,7 @@ function Navbar({curTheme, activateMonty}) {
   </div>
 
   return (
-    <nav className={`h-0 md:h-auto collapse md:visible md:mt-0 w-11/12 z-10 md:sticky top-0 ${curTheme.colors.text} md:mr-6 md:w-3/12 max-h-screen md:flex md:flex-col md:justify-between pt-12 md:pt-20 md:pb-52`}>
+    <nav className={`h-0 md:h-auto collapse md:visible md:mt-0 w-11/12 z-10 md:sticky top-0 ${curTheme.colors.text} md:mr-6 md:w-3/12 max-h-screen md:flex md:flex-col md:justify-between md:pt-20 md:pb-52`}>
       <div>
         <strong className='text-5xl'>MARCUS CHEUNG</strong>
 

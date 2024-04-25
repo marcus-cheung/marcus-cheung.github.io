@@ -3,8 +3,7 @@ import React from 'react';
 
 function About({curTheme}) {
   return (
-    <div className='bg-face w-full h-fit pt-8 md:pt-20 flex flex-col gap-4'>
-      <img src='assets/images/wave.gif' className='w-72 mx-auto'></img>
+    <div className='bg-face w-full h-fit pt-8 md:pt-16 flex flex-col gap-4'>
       <div>
         <p className='text-2xl'>
           <p className='text-3xl'>Hi!</p><br/>

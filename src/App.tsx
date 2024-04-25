@@ -85,7 +85,15 @@ const App: React.FC = () => {
                 <LightBulb setThemeIndex={setThemeIndex} curTheme={curTheme} setCursorStyle={setCursorStyle}></LightBulb>
               </div>
             </main>
-            <footer className={`w-full mt-32 h-32 flex justify-center items-center text-xs`}>Poilom and Fogum</footer>
+
+            <footer className={`w-full mt-32 h-32 flex justify-center items-center text-xs`}>
+              Poilom and Fogum
+              <div className='h-0 fixed group duration-1000 -bottom-60 hover:-translate-y-48 hover:-translate-x-12 md:h-fit -right-24'>
+                <p className='text-4xl opacity-0 h-0 group-hover:h-fit group-hover:delay-500 group-hover:duration-100 group-hover:opacity-100'>jiraf_lord</p>
+                <img src='assets/images/jiraf.png' className='h-0 md:h-96'></img>
+              </div>
+              
+            </footer>
             {/* Floaters */}
             
           </div>

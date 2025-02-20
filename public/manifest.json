@@ -2,16 +2,7 @@
   "short_name": "Marcus Cheung",
   "name": "Marcus Cheung",
   "icons": [
-    {
-      "src": "assets/images/icons/frog_dark.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "assets/images/face.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    }
+
   ],
   "start_url": ".",
   "display": "standalone",

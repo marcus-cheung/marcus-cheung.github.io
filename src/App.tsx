@@ -80,7 +80,7 @@ const App: React.FC = () => {
               </div>
               {/* Top Bar */}
               <div className='flex fixed md:fixed pt-6 gap-4 z-50 right-0 ${curTheme.colors.bg}'>
-                <img className='w-10 h-10 mt-2 cursor-pointer' src='assets/images/cart.png' onClick={()=>{modalRef.current.style.visibility = 'visible';}}></img>
+                {/* <img className='w-10 h-10 mt-2 cursor-pointer' src='assets/images/cart.png' onClick={()=>{modalRef.current.style.visibility = 'visible';}}></img> */}
                 <LightBulb setThemeIndex={setThemeIndex} curTheme={curTheme} setCursorStyle={setCursorStyle}></LightBulb>
               </div>
             </main>

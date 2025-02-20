@@ -54,7 +54,7 @@ function Projects({curTheme}) {
         return (
             <FadeIn bgStyle={`${curTheme.colors.highlight} rounded group`}>
                 <a className={`group w-full h-fit`} href={project.link} target='_blank'>
-                    <div className={`w-full flex duration-100 hover:-translate-y-2 hover:-translate-x-2 px-2 py-4 ${curTheme.colors.bg} border-2 ${curTheme.colors.border} py-2 rounded`}>
+                    <div className={`w-full flex duration-100 transition-transform hover:-translate-y-2 hover:-translate-x-2 px-2 py-4 ${curTheme.colors.bg} border-2 ${curTheme.colors.border} py-2 rounded`}>
                         <div className='w-24 min-w-24 flex justify-center pr-4 items-center'>
                             <img className= 'h-16 max-w-16 relative' src={project.sticker} draggable='false'></img>
                         </div>

@@ -8,7 +8,7 @@ const experiences = [
             {
                 link: 'https://privacysandbox.com/',
                 image: 'assets/images/gstamp1.png',
-                year: '2024',
+                year: 'Present',
                 title: 'SWE L3  »  Privacy Sandbox',
                 description: 'Working on private model training.',
                 frameworks: []
@@ -27,7 +27,7 @@ const experiences = [
                 image: 'assets/images/gpay_stamp.gif',
                 year: '2022',
                 title: 'STEP Intern » GPay',
-                description:'Streamlined external API integration, resulting in the deprecation of magic value-based sandboxing and greater testing coverage.',
+                description:'Streamlined external API integration. Deprecated of magic value-based sandboxing and increased testing coverage.',
                 frameworks: ['Java', 'Protocol Buffers', 'JSON']
             }
         ]
@@ -75,7 +75,7 @@ function Work({curTheme}) {
         return (
             <FadeIn bgStyle={`${curTheme.colors.highlight} rounded group`}>
                 <a className={`w-full h-fit`} href={role.link} target='_blank'>
-                    <div className={`w-full flex duration-100 hover:-translate-y-2 hover:-translate-x-2 px-2 py-4 ${curTheme.colors.bg} border-2 ${curTheme.colors.border} py-2 rounded`}>
+                    <div className={`w-full flex duration-100 transition-transform hover:-translate-y-2 hover:-translate-x-2 px-2 py-4 ${curTheme.colors.bg} border-2 ${curTheme.colors.border} py-2 rounded`}>
                         <div className='w-24 min-w-24 group-hover:text-orange-500'>
                             <strong>{role.year}</strong>   
                         </div>

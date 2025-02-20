@@ -1,6 +1,5 @@
 import React, {useRef} from 'react';
 import { Link as ScrollLink, Element, animateScroll as scroll } from 'react-scroll';
-import Mole from './Mole'
 
 
 function Social({url, image}) {

@@ -23,8 +23,8 @@ function FadeIn({children, bgStyle=''}) {
                 }   
   }, [ref]);
   return (
-    <div ref={ref} className={`relative ease-in-out`}>
-      <div className={`absolute relative ${bgStyle} ${isVisible ? 'scale-100 opacity-100 translate-y-0' : `scale-50 opacity-0 ${scrollDown ? 'translate-y-36' : '-translate-y-36'}`} duration-300`}>
+    <div ref={ref} className={`relative`}>
+      <div className={`absolute relative ${bgStyle} ${isVisible ? 'scale-100 opacity-100 translate-y-0' : `scale-50 opacity-0 ${scrollDown ? 'translate-y-36' : '-translate-y-36'}`} transition-transform transition-opacity ease-in-out duration-300`}>
         {children}
       </div>
     </div>

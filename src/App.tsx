@@ -60,7 +60,6 @@ const App: React.FC = () => {
               <SecretCode closeModal={closeModal}></SecretCode>
             </div>
             
-
             <main className='px-10 max-w-full h-fit min-h-screen flex justify-center min-w-fit'>
               {monty ? <Mole></Mole> : ''}
               <div className='md:flex relative justify-around'>
@@ -88,9 +87,13 @@ const App: React.FC = () => {
 
             <footer className={`w-full mt-32 h-32 flex justify-center items-center text-xs`}>
               Poilom and Fogum
-              <div className='h-0 fixed group duration-1000 -bottom-60 hover:-translate-y-48 hover:-translate-x-12 md:h-fit -right-24'>
-                <p className='text-4xl opacity-0 h-0 group-hover:h-fit group-hover:delay-500 group-hover:duration-100 group-hover:opacity-100'>jiraf_lord</p>
-                <img src='assets/images/jiraf.png' className='h-0 md:h-96'></img>
+              {/* <div className='h-0 fixed group duration-[1600ms] -bottom-[340px] hover:-translate-y-[280px] hover:-translate-x-12 md:h-fit -right-16'>
+                <p className='text-sm ml-10 mb-2 opacity-0 h-0 group-hover:h-fit group-hover:opacity-100'>jiraf_lord</p>
+                <img src='assets/images/jiraf_long.png' className='h-0 md:h-[450px]'></img>
+              </div> */}
+              <div className='h-0 fixed group duration-[5000ms] -bottom-[930px] hover:-translate-y-[800px] hover:-translate-x-12 lg:h-fit -right-32'>
+                <p className='text-lg ml-24 mb-2 opacity-0 h-0 group-hover:h-fit group-hover:opacity-100'>jiraf_lord</p>
+                <img src='assets/images/jiraf_long.png' className='h-0 lg:h-[1000px]'></img>
               </div>
               
             </footer>

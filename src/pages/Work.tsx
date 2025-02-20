@@ -10,7 +10,7 @@ const experiences = [
                 image: 'assets/images/gstamp1.png',
                 year: '2024',
                 title: 'SWE L3  »  Privacy Sandbox',
-                description: 'Incoming.',
+                description: 'Working on private model training.',
                 frameworks: []
                 
             },

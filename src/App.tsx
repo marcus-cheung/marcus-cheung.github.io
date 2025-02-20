@@ -87,15 +87,10 @@ const App: React.FC = () => {
 
             <footer className={`w-full mt-32 h-32 flex justify-center items-center text-xs`}>
               Poilom and Fogum
-              {/* <div className='h-0 fixed group duration-[1600ms] -bottom-[340px] hover:-translate-y-[280px] hover:-translate-x-12 md:h-fit -right-16'>
-                <p className='text-sm ml-10 mb-2 opacity-0 h-0 group-hover:h-fit group-hover:opacity-100'>jiraf_lord</p>
-                <img src='assets/images/jiraf_long.png' className='h-0 md:h-[450px]'></img>
-              </div> */}
               <div className='h-0 fixed group duration-[5000ms] -bottom-[930px] hover:-translate-y-[800px] hover:-translate-x-12 lg:h-fit -right-32'>
                 <p className='text-lg ml-24 mb-2 opacity-0 h-0 group-hover:h-fit group-hover:opacity-100'>jiraf_lord</p>
                 <img src='assets/images/jiraf_long.png' className='h-0 lg:h-[1000px]'></img>
               </div>
-              
             </footer>
             {/* Floaters */}
             
@@ -103,8 +98,3 @@ const App: React.FC = () => {
     );
 };
 export default App;
-
-{/* <a href='https://open.spotify.com/user/uokzhv84ckxmlhel7u9b4xga3?si=2f415cd8f55f4b6b' target="_blank">
-                    <img className='absolute bottom-[-100px] right-[-24px] w-24 shadow-[0_0px_15px_orange] rounded-full' src='assets/images/disk.gif'></img>
-                  </a>
-                  <img src='assets/images/police-bear.gif' className='absolute bottom-[900px] right-[90px]'></img> */}

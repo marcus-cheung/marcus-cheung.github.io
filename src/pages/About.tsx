@@ -12,7 +12,7 @@ function About({curTheme}) {
           <b className={`whitespace-nowrap ${curTheme.colors.textHighlight} cursor-[url('../public/assets/images/android_cursor.png')_18_18,_auto]`}>
           Google
           </b>
-          &nbsp;working on <span className='whitespace-nowrap'>The Privacy Sandbox.</span> I recently graduated from&nbsp;
+          &nbsp;working on <span className='whitespace-nowrap'>private model training.</span> I recently graduated from&nbsp;
           <b className={`whitespace-nowrap ${curTheme.colors.textHighlight} cursor-[url('../public/assets/images/oski.png')_16_16,_auto]`}>
           UC Berkeley
           </b>
@@ -24,7 +24,6 @@ function About({curTheme}) {
         </p>
       </div>
       
-      {/* <a className='curTheme.colors.textHighlight' href='assets/images/okja.png' target='_blank'>Resume</a> */}
     </div>
     );
 };

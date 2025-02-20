@@ -19,10 +19,7 @@ module.exports = {
         mont: ['Montserrat', 'sans-serif'],
         incon: ['Inconsolata', 'sans-serif']
       },
-      cursor: {
-        android: "url('../public/assets/images/android_cursor.png'), pointer",
-        // okja: 'url(/assets/images/face.png), pointer',
-      },
+
     },
   },
   plugins: [],

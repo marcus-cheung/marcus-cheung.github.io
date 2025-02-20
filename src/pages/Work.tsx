@@ -20,7 +20,7 @@ const experiences = [
                 year: '2023',
                 title: 'SWE Intern » AR Experiences',
                 description: 'Optimized an ear landmark ML model for mobile devices, used in virtual try-on and to supplement facial landmarking research.',
-                frameworks: ['Python', 'C++', 'OpenCV', 'CUDA', 'TensorFlow', 'MediaPipe', 'blaze']
+                frameworks: ['Python', 'C++', 'OpenCV', 'TensorFlow', 'MediaPipe', 'blaze']
             },
             {
                 link: 'https://pay.google.com/about/',
@@ -40,7 +40,7 @@ const experiences = [
                 image: 'assets/images/hanson_stamp.png',
                 year: '2021',
                 title: 'SWE Intern',
-                description: 'Developed a short-term human reidentification computer vision algorithm on top of a camera-embedded deep-learning system.',
+                description: 'Developed a computer vision algorithm for short-term human reidentification, built on top of a camera-embedded deep-learning system.',
                 frameworks: ['Python', 'OpenCV', 'NumPy', 'ROS', 'rospy', 'Blenderpy']
             },
         ]
@@ -82,7 +82,7 @@ function Work({curTheme}) {
                         <div className='w-full flex flex-col'>
                             <strong className='group-hover:text-orange-500'>{role.title}</strong>   
                             <p>{role.description}</p>
-                            <div className='flex gap-4 flex-wrap'>
+                            <div className='flex pt-4 gap-2 flex-wrap'>
                                 {role.frameworks.map(framework)}
                             </div>
                         </div>
@@ -97,7 +97,7 @@ function Work({curTheme}) {
     function Experience(experience) {
         return (
             <div className='flex flex-col w-fit h-fit rounded'>
-                <FadeIn><b className='flex text-lg mb-2 w-fit'>{experience.company}</b></FadeIn>
+                <FadeIn><b className='flex text-xl mb-2 w-fit'>{experience.company}</b></FadeIn>
                 <div className='flex flex-col gap-4'>
                     {experience.roles.map(Role)}
                 </div>

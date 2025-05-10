@@ -176,8 +176,8 @@ const LightBulb = ({setThemeIndex, curTheme, setCursorStyle}) =>{
 
     return (
         <div className='flex h-fit flex-col justify-center items-center'>
-            <img ref={bulbRef} src={curTheme.assets.bulb} className='w-12 min-w-12 h-auto select-none cursor-pointer' draggable='false'/>
-            <div ref={scene}  style={{width: sceneWidth, height: sceneHeight}}></div>
+            <img ref={bulbRef} src={curTheme.assets.bulb} className='w-8 md:w-12 h-auto select-none cursor-pointer' draggable='false'/>
+            <div className={'hidden md:inline'} ref={scene}  style={{width: sceneWidth, height: sceneHeight}}></div>
         </div>
     )
 }

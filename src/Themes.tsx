@@ -22,7 +22,7 @@ export const themes: Theme[] = [
     name: 'Light',
     colors: {
       text: 'text-slate-900',
-      textHighlight:  'text-orange-500',
+      textHighlight: 'text-orange-500',
       bg: 'bg-[#f5eee9]',
       highlight: 'bg-orange-500',
       border: 'border-orange-500'
@@ -40,10 +40,10 @@ export const themes: Theme[] = [
     name: 'Dark',
     colors: {
       text: 'text-stone-200',
-      textHighlight:  'text-orange-500',
+      textHighlight: 'text-orange-400',
       bg: 'bg-stone-950',
-      highlight: 'bg-orange-500',
-      border: 'border-orange-500'
+      highlight: 'bg-orange-400',
+      border: 'border-orange-400'
     },
     assets: {
       bulb: 'assets/dark/icons/lightbulb.png',

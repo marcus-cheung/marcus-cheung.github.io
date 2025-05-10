@@ -8,7 +8,7 @@ const experiences = [
             {
                 link: 'https://privacysandbox.com/',
                 image: 'assets/images/gstamp1.png',
-                year: 'Present',
+                year: 'Curr.',
                 title: 'SWE L3  »  Privacy Sandbox',
                 description: 'Working on private model training.',
                 frameworks: []
@@ -75,14 +75,14 @@ function Work({curTheme}) {
         return (
             <FadeIn bgStyle={`${curTheme.colors.highlight} rounded group`}>
                 <a className={`w-full h-fit`} href={role.link} target='_blank'>
-                    <div className={`w-full flex duration-100 transition-transform hover:-translate-y-2 hover:-translate-x-2 px-2 py-4 ${curTheme.colors.bg} border-2 ${curTheme.colors.border} py-2 rounded`}>
-                        <div className='w-24 min-w-24 group-hover:text-orange-500'>
+                    <div className={`w-full flex-col md:flex-row flex duration-100 transition-transform hover:-translate-y-2 hover:-translate-x-2 px-3 md:px-2 py-4 ${curTheme.colors.bg} border-2 ${curTheme.colors.border} py-2 rounded`}>
+                        <div className='w-24 min-w-24 group-hover:text-orange-500 mb-2'>
                             <strong>{role.year}</strong>   
                         </div>
                         <div className='w-full flex flex-col'>
                             <strong className='group-hover:text-orange-500'>{role.title}</strong>   
                             <p>{role.description}</p>
-                            <div className='flex pt-4 gap-2 flex-wrap'>
+                            <div className='flex pt-4 gap-x-2 gap-y-1 flex-wrap'>
                                 {role.frameworks.map(framework)}
                             </div>
                         </div>
@@ -106,7 +106,7 @@ function Work({curTheme}) {
     }
 
     return (
-        <div className='w-full h-fit flex flex-col gap-8 text-lg'>
+        <div className='w-full h-fit flex flex-col gap-8 text-base md:text-lg items-center'>
             <FadeIn><b className='flex justify-center text-5xl'>WORK</b></FadeIn>
             {experiences.map(Experience)}
         </div>

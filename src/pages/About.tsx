@@ -3,27 +3,23 @@ import React from 'react';
 
 function About({curTheme}) {
   return (
-    <div className='bg-face w-full h-fit pt-16 md:pt-52 flex flex-col gap-4'>
-      <div>
-        <p className='text-2xl'>
-          <p className='text-3xl'>Hi!</p><br/>
-
-          I'm a software engineer at&nbsp;
-          <b className={`whitespace-nowrap ${curTheme.colors.textHighlight} cursor-[url('../public/assets/images/android_cursor.png')_18_18,_auto]`}>
+    <div className='bg-face w-full h-fit pt-12 md:pt-20 flex-col flex gap-4'>
+      <img className='h-56 max-w-56 md:h-80 md:max-w-80 relative mx-auto' src='assets/images/pfp_trim.png'></img>
+      <div className='flex-col flex justify-center'></div>
+      <p className="text-2xl md:text-3xl w-full">
+        Hi. I'm a software engineer at{" "}
+        <b className={`${curTheme.colors.textHighlight} cursor-[url('../public/assets/images/android_cursor.png')_18_18,_auto]`}>
           Google
-          </b>
-          &nbsp;working on <span className='whitespace-nowrap'>private model training.</span> I recently graduated from&nbsp;
-          <b className={`whitespace-nowrap ${curTheme.colors.textHighlight} cursor-[url('../public/assets/images/oski.png')_16_16,_auto]`}>
+        </b>
+        {" "}working on private model training. I received my bachelors in Computer Science from{" "}
+        <b className={`whitespace-nowrap ${curTheme.colors.textHighlight} cursor-[url('../public/assets/images/oski.png')_16_16,_auto]`}>
           UC Berkeley
-          </b>
-          &nbsp;with a bachelors in Computer Science.
-        </p>
-        <br/>
-        <p className='text-2xl'>
-          That's all, have fun exploring my website!
-        </p>
-      </div>
-      
+        </b>.
+        <br />
+        <br />
+        Keep scrolling to learn more about me!
+      </p>
+
     </div>
     );
 };

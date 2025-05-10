@@ -53,15 +53,15 @@ function Projects({curTheme}) {
     function Project(project) {
         return (
             <FadeIn bgStyle={`${curTheme.colors.highlight} rounded group`}>
-                <a className={`group w-full h-fit`} href={project.link} target='_blank'>
-                    <div className={`w-full flex duration-100 transition-transform hover:-translate-y-2 hover:-translate-x-2 px-2 py-4 ${curTheme.colors.bg} border-2 ${curTheme.colors.border} py-2 rounded`}>
-                        <div className='w-24 min-w-24 flex justify-center pr-4 items-center'>
+                <a className={`w-full h-fit`} href={project.link} target='_blank'>
+                    <div className={`w-full flex md:px-0 duration-100 transition-transform hover:-translate-y-2 hover:-translate-x-2 px-3 py-4 ${curTheme.colors.bg} border-2 ${curTheme.colors.border} py-2 rounded`}>
+                        <div className='hidden px-2 md:inline w-24 min-w-24 flex justify-center pr-4 items-center'>
                             <img className= 'h-16 max-w-16 relative' src={project.sticker} draggable='false'></img>
                         </div>
-                        <div className='flex flex-col w-fit max-w-[472px] h-fit'>
-                            <b className='group-hover:text-orange-500'>{project.title}</b>
+                        <div className='flex flex-col w-fit h-fit'>
+                            <b className='mb-2 group-hover:text-orange-500'>{project.title}</b>
                             <p>{project.description}</p>
-                            <div className='flex pt-4 gap-2 flex-wrap'>
+                            <div className='flex pt-4 gap-x-2 gap-y-1 flex-wrap'>
                                 {project.frameworks.map(framework)}
                             </div>
                         </div>
@@ -72,7 +72,7 @@ function Projects({curTheme}) {
     }
 
     return (
-        <div className='w-full h-fit flex flex-col gap-6 text-lg'>
+        <div className='w-full h-fit flex flex-col justify-center gap-6 text-base md:text-lg'>
             <FadeIn>
                 <strong className='flex justify-center text-5xl mb-6'>PROJECTS</strong>
             </FadeIn>

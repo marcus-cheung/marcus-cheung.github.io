@@ -47,17 +47,16 @@ function Navbar({curTheme, activateMonty}) {
   </div>
 
   return (
-    <nav className={`h-0 md:h-auto collapse md:visible md:mt-0 w-11/12 z-10 md:sticky top-0 ${curTheme.colors.text} md:mr-6 md:w-3/12 max-h-screen md:flex md:flex-col md:justify-between md:pt-20 md:pb-52`}>
-      <div>
-        <strong className='text-5xl'>MARCUS CHEUNG</strong>
+    <nav className={`h-0 collapse md:visible ml-20 z-10 md:sticky top-0 ${curTheme.colors.text} md:w-36 md:h-screen md:flex md:flex-col md:justify-between md:pt-16 md:pb-36 md:flex-shrink-0`}>
+      <strong className='text-5xl'>MARCUS CHEUNG</strong>
 
-        <div className={'flex gap-8 md:mt-16 mt-3 md:flex-col md:gap-4 mb-2'}>
-          <ButtonStyle route='#' element={<div>About</div>}></ButtonStyle>
-          <ButtonStyle route='#work' element={<div>Work</div>}></ButtonStyle>
-          <ButtonStyle route='#projects' element={<div>Projects</div>}></ButtonStyle>
-          {montyButton}
-        </div>
+      <div className={'flex justify-around md:flex-col md:gap-4 mb-2'}>
+        <ButtonStyle route='#' element={<div>About</div>}></ButtonStyle>
+        <ButtonStyle route='#work' element={<div>Work</div>}></ButtonStyle>
+        <ButtonStyle route='#projects' element={<div>Projects</div>}></ButtonStyle>
+        {montyButton}
       </div>
+
       
         
       <div className={'flex gap-4'}>

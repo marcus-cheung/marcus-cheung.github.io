@@ -59,7 +59,7 @@ function Projects({curTheme}) {
                             <img className= 'h-16 max-w-16 relative' src={project.sticker} draggable='false'></img>
                         </div>
                         <div className='flex flex-col w-fit h-fit'>
-                            <b className='mb-2 group-hover:text-orange-500'>{project.title}</b>
+                            <b className={`mb-2 ${curTheme.colors.textHoverHighlight}`}>{project.title}</b>
                             <p>{project.description}</p>
                             <div className='flex pt-4 gap-x-2 gap-y-1 flex-wrap'>
                                 {project.frameworks.map(framework)}

@@ -12,6 +12,8 @@ import LightBulb from './components/LightBulb';
 import FadeIn from './components/FadeIn';
 import SecretCode from './components/SecretCode';
 import Mole from './components/Mole';
+import MoleFollower from './components/MoleFollower';
+
 
 
 
@@ -55,21 +57,20 @@ const App: React.FC = () => {
                   </Element>
 
   
-
   return (<div className={`font-incon flex h-fit flex-col md:justify-center ${curTheme.colors.bg} ${cursorStyle} ${curTheme.colors.text}`}>            
             {/* Modal */}
             {/* <div ref={modalRef} className='w-full z-20 h-full bg-black fixed bg-opacity-40 flex justify-center items-center' style={{visibility: 'hidden'}}>
               <SecretCode closeModal={closeModal}></SecretCode>
             </div> */}
-                {/* <Navbar curTheme={curTheme} activateMonty={()=>setMonty(true)}></Navbar> */}
-
             
             <main className='w-full min-h-screen md:flex'>
               {monty ? <Mole></Mole> : ''}
+              {/* {monty ? <MoleFollower></MoleFollower> : ''} */}
+
               <Navbar curTheme={curTheme} activateMonty={()=>setMonty(true)}></Navbar>
                 {/* Main Body */}
-                <div className='px-12 md:px-0 flex justify-center w-full'>
-                  <div className='lg:w-[10%] md:w-8 w-0'/>
+                <div className='px-12 md:px-0 flex justify-evenly w-full'>
+                  <div className='lg:w-[5%] md:w-8 w-0'/>
                   <div className="relative flex-1 flex flex-col justify-center items-center h-fit md:w-full md:max-w-[750px]">
                     {about}
 
@@ -82,14 +83,14 @@ const App: React.FC = () => {
                     
                     <footer className={`w-full h-32 flex justify-center items-center text-xs`}>
                         Poilom and Fogum
-                      <div className='h-0 fixed group duration-[5000ms] -bottom-[440px] hover:-translate-y-[380px] hover:-translate-x-12 lg:h-fit -right-24'>
+                      <div className='h-0 fixed group duration-[1500ms] -bottom-[440px] hover:-translate-y-[380px] hover:-translate-x-12 lg:h-fit -right-24'>
                         <p className='text-lg ml-20 mb-2 opacity-0 h-0 group-hover:h-fit group-hover:opacity-100'>jiraf_lord</p>
-                        <img src='assets/images/jiraf.png' className='h-0 lg:h-[500px]'></img>
+                        <img src={curTheme.assets.jiraf} className='h-0 lg:h-[500px]'></img>
                       </div>
                     </footer>
+
                   </div>
                   <div className='lg:w-[10%] md:w-8 w-0'/>
-
                 </div>
 
 

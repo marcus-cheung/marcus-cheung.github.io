@@ -48,7 +48,9 @@ function Navbar({curTheme, activateMonty}) {
 
   return (
     <nav className={`h-0 collapse md:visible ml-20 z-10 md:sticky top-0 ${curTheme.colors.text} md:w-36 md:h-screen md:flex md:flex-col md:justify-between md:pt-16 md:pb-36 md:flex-shrink-0`}>
-      <strong className='text-5xl'>MARCUS CHEUNG</strong>
+      <a href="/">
+        <strong className='text-5xl cursor-pointer'>MARCUS CHEUNG</strong>
+      </a>
 
       <div className={'flex justify-around md:flex-col md:gap-4 mb-2'}>
         <ButtonStyle route='#' element={<div>About</div>}></ButtonStyle>

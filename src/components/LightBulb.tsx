@@ -152,7 +152,6 @@ const LightBulb = ({setThemeIndex, curTheme, setCursorStyle}) =>{
                 } else if (angle > verticalAngle + (maxAngle - verticalAngle)) {
                     angle = verticalAngle + (maxAngle - verticalAngle);
                 }
-
                 // Recalculate distance to use for length clamping
                 const dist = distance({X: topBlock.position.x, Y: topBlock.position.y},
                                         {X: relativeX, Y: relativeY})

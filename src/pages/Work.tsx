@@ -6,7 +6,7 @@ const experiences = [
         company: 'GOOGLE',
         roles: [
             {
-                // link: '',
+                link: 'https://blog.google/technology/ai/google-private-ai-compute/',
                 year: 'Curr.',
                 title: 'SWE  »  Encrypted Zone',
                 description: 'Private inference for Gemini.',
@@ -40,7 +40,7 @@ const experiences = [
                 link: 'https://pay.google.com/about/',
                 year: '2022',
                 title: 'STEP Intern » GPay',
-                description:'Sandbox testing for mDL.',
+                description:'Sandbox testing for mobile drivers license.',
                 frameworks: ['Java', 'Protocol Buffers', 'JSON']
             }
         ]
